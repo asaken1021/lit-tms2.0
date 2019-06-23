@@ -1,0 +1,5 @@
+<h2>プロジェクト一覧</h2>
+<% @projects.each do |project| %>
+  <% name = project.name %>
+  <a href="/projects/<%= name %>"><%= name %></a>
+<% end %>
