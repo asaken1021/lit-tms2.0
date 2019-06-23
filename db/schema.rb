@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_064408) do
+ActiveRecord::Schema.define(version: 2019_06_23_085430) do
 
   create_table "phases", force: :cascade do |t|
     t.string "name"
     t.datetime "deadline"
+    t.integer "project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -28,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_06_23_064408) do
     t.string "name"
     t.string "memo"
     t.integer "progress"
+    t.integer "phase_id"
+    t.integer "project_id"
   end
 
 end

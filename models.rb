@@ -6,5 +6,13 @@ if development?
 end
 
 class Project < ActiveRecord::Base
+  has_many :phases
+end
+
+class Phase < ActiveRecord::Base
+  has_many :tasks
+end
+
+class Task < ActiveRecord::Base
 
 end

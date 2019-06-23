@@ -25,3 +25,8 @@ get '/projects' do #プロジェクト一覧
   @projects = Project.all
   erb :projects
 end
+
+get '/projects/:name' do #プロジェクトページ
+  @project = Project.find(params[:name])
+  erb :project_page
+end
