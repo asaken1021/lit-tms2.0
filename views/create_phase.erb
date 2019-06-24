@@ -1,6 +1,23 @@
-<h2><%= @project.name %>: 新規フェーズ作成</h2>
-<form action="/projects/<%= @project.id %>/create_phase" method="post">
-  <input type="text" name="phase_name" placeholder="フェーズ名">
-  <input type="text" name="deadline_date" placeholder="日付">
-  <input type="submit" value="作成">
-</form>
+<div class="container">
+  <h2 class="tms-project-title"><%= @project.name %></h2>
+  <div class="card text-center">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">新規フェーズ作成</h4>
+      <p class="card-text"></p>
+			<form action="/projects/<%= @project.id %>/create_phase" method="post">
+				<div class="row">
+					<div class="col">
+						<input class="form-control input-lg" type="text" name="phase_name" placeholder="フェーズ名">
+            <input class="form-control input-lg" type="text" name="deadline_date" placeholder="締め切り日付">
+					</div>
+					<div class="col col-lg-2">
+            <input class="form-control btn btn-link" type="submit" value="">
+						<input class="form-control btn btn-primary" type="submit" value="作成">
+					</div>
+			</form>
+    </div>
+  </div>
+</div>

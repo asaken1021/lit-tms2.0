@@ -1,46 +1,50 @@
-<h2><%= @project.name %>: <%= @selected_phase.name %></h2>
-<table>
-  <thead>
-    <tr>
-      <th>フェーズ名</th>
-      <th>締め切り日付</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @phases.each do |phase| %>
+<div class="container">
+  <h2 class="tms-project-title"><%= @project.name %></h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
       <tr>
-        <td><a href="/projects/<%= @project.id %>/<%= phase.id %>"><%= phase.name %></a></td>
-        <td><%= phase.deadline.to_s.gsub('-', '/') %></td>
+        <th scope="col">フェーズ名</th>
+        <th scope="col">締め切り日付</th>
       </tr>
-    <% end %>
-    <!-- <tr><td><a href="/projects/<%= @project.id %>/create_phase">新規フェーズ作成</a></td></tr> -->
-  </tbody>
-</table>
-<table>
-  <thead>
-    <th>タスク名</th>
-    <th>メモ</th>
-    <th>進捗</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
+    </thead>
+    <tbody>
+      <% @phases.each do |phase| %>
+        <tr>
+          <td><a href="/projects/<%= @project.id %>/<%= phase.id %>"><%= phase.name %></a></td>
+          <td><%= phase.deadline.to_s.gsub('-', '/') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/projects/<%= @project.id %>/create_phase">新規フェーズ作成</a><br><br>
+  <table class="table table-bordered">
+    <thead class="thead-light">
       <tr>
-        <td><%= task.name %></td>
-        <td><%= task.memo %></td>
-        <td>
-          <a href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/edit_progress_task/<%= task.id %>">
-            <%= task.progress %>
-            %
-          </a>
-        </td>
-        <td>
-          <form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/remove_task/<%= task.id %>" method="post">
-            <input type="submit" value="削除">
-          </form>
-        </td>
+        <th scope="col">タスク名</th>
+        <th scope="col">メモ</th>
+        <th scope="col">進捗</th>
+        <th scope="col"></th>
       </tr>
-    <% end %>
-    <tr><td><a href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/create_task">新規タスク作成</a></td></tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td class="align-middle"><%= task.name %></td>
+          <td class="align-middle"><%= task.memo %></td>
+          <td class="align-middle">
+            <a href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/edit_progress_task/<%= task.id %>">
+              <%= task.progress %>
+              %
+            </a>
+          </td>
+          <td>
+            <form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/remove_task/<%= task.id %>" method="post">
+              <input class="btn btn-primary" type="submit" value="削除">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/create_task">新規タスク作成</a>
+</div>

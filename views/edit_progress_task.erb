@@ -1,5 +1,21 @@
-<h2><%= @project.name %>: <%= @selected_phase.name %>: <%= @task.name %> タスクの進捗度編集</h2>
-<form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/edit_progress_task/<%= @task.id %>" method="post">
-  <input type="range" name="progress" min="0" max="100">
-  <input type="submit" value="保存">
-</form>
+<div class="container">
+  <h2 class="tms-project-title"><%= @project.name %></h2>
+  <div class="card text-center">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">タスクの進捗度編集：<%= @task.name %></h4>
+      <p class="card-text"></p>
+			<form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/edit_progress_task/<%= @task.id %>" method="post">
+				<div class="row">
+					<div class="col">
+						<input class="form-control-range" type="range" name="progress" min="0" max="100">
+					</div>
+					<div class="col col-lg-2">
+						<input class="form-control btn btn-primary" type="submit" value="保存">
+					</div>
+			</form>
+    </div>
+  </div>
+</div>
