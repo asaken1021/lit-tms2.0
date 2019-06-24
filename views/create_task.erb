@@ -1,0 +1,6 @@
+<h2><%= @project.name %>: <%= @selected_phase.name %>新規タスク作成</h2>
+<form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/create_task" method="post">
+  <input type="text" name="task_name" placeholder="タスク名">
+  <input type="text" name="task_memo" placeholder="メモ">
+  <input type="submit" value="作成">
+</form>

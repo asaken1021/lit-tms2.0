@@ -1,0 +1,6 @@
+<h2><%= @project.name %>: 新規フェーズ作成</h2>
+<form action="/projects/<%= @project.id %>/create_phase" method="post">
+  <input type="text" name="phase_name" placeholder="フェーズ名">
+  <input type="text" name="deadline_date" placeholder="日付">
+  <input type="submit" value="作成">
+</form>

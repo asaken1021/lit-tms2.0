@@ -1,0 +1,46 @@
+<h2><%= @project.name %>: <%= @selected_phase.name %></h2>
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>締め切り日付</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @phases.each do |phase| %>
+      <tr>
+        <td><a href="/projects/<%= @project.id %>/<%= phase.id %>"><%= phase.name %></a></td>
+        <td><%= phase.deadline.to_s.gsub('-', '/') %></td>
+      </tr>
+    <% end %>
+    <!-- <tr><td><a href="/projects/<%= @project.id %>/create_phase">新規フェーズ作成</a></td></tr> -->
+  </tbody>
+</table>
+<table>
+  <thead>
+    <th>タスク名</th>
+    <th>メモ</th>
+    <th>進捗</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.memo %></td>
+        <td>
+          <a href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/edit_progress_task/<%= task.id %>">
+            <%= task.progress %>
+            %
+          </a>
+        </td>
+        <td>
+          <form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/remove_task/<%= task.id %>" method="post">
+            <input type="submit" value="削除">
+          </form>
+        </td>
+      </tr>
+    <% end %>
+    <tr><td><a href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/create_task">新規タスク作成</a></td></tr>
+  </tbody>
+</table>
