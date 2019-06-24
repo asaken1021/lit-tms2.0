@@ -1,5 +1,20 @@
-<h2>新規プロジェクト作成</h2>
-<form action="/create_project" method="post">
-	<input type="text" name="project_name" placeholder="プロジェクト名">
-	<input type="submit" value="作成">
-</form>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">新規プロジェクト作成</h4>
+      <p class="card-text">新しくプロジェクトを作成します。</p>
+			<form action="/create_project" method="post">
+				<div class="row">
+					<div class="col">
+						<input class="form-control input-lg" type="text" name="project_name" placeholder="プロジェクト名">
+					</div>
+					<div class="col col-lg-2">
+						<input class="form-control btn btn-primary" type="submit" value="作成">
+					</div>
+			</form>
+    </div>
+  </div>
+</div>

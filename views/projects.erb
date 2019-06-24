@@ -1,4 +1,17 @@
-<h2>プロジェクト一覧</h2>
-<% @projects.each do |project| %>
-  <p><a href="/projects/<%= project.id %>"><%= project.name %></a></p>
-<% end %>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      プロジェクト一覧
+    </div>
+    <div class="card-body">
+      <p class="card-text">作成されているプロジェクトの一覧</p>
+    </div>
+  </div>
+  <% @projects.each do |project| %>
+    <div class="card text-center">
+      <div class="card-body">
+        <a href="/projects/<%= project.id %>"><h4 class="card-title"><%= project.name %></h4></a>
+      </div>
+    </div>
+  <% end %>
+</div>
