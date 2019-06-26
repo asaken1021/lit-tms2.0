@@ -10,7 +10,18 @@
 			<form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/edit_progress_task/<%= @task.id %>" method="post">
 				<div class="row">
 					<div class="col">
-						<input class="form-control-range" type="range" name="progress" min="0" max="100">
+						<input class="form-control-range" id="range" type="range" name="progress" min="0" max="100" value="<%= @task.progress %>">
+            <span id="value"><%= @task.progress %>%</span>
+            <script>
+              var elem = document.getElementById('range');
+              var target = document.getElementById('value');
+              var rangeValue = function (elem, target) {
+                return function(evt){
+                  target.innerHTML = elem.value + '%';
+                }
+              }
+              elem.addEventListener('input', rangeValue(elem, target));
+            </script>
 					</div>
 					<div class="col col-lg-2">
 						<input class="form-control btn btn-primary" type="submit" value="保存">
