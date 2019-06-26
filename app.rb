@@ -30,6 +30,7 @@ get '/projects/:id' do #プロジェクトページ
   @project = Project.find(params[:id])
   @phases = Phase.where(project_id: @project.id)
   all_tasks = Task.where(project_id: @project.id)
+  update_project_progress(params[:id])
   erb :project_page
 end
 
@@ -63,6 +64,7 @@ get '/projects/:id/:phase_id' do #フェーズページ
   if @completed_tasks_count == nil
     @completed_tasks_count = 0
   end
+  update_project_progress(params[:id])
   erb :phase_page
 end
 
@@ -82,6 +84,7 @@ post '/projects/:id/:phase_id/create_task' do #タスク作成
     project_id: project.id,
     phase_id: phase.id
   )
+  update_project_progress(params[:id])
   redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
 end
 
@@ -90,6 +93,7 @@ post '/projects/:id/:phase_id/remove_task/:task_id' do #タスクの削除
   phase = Phase.find(params[:phase_id])
   task = Task.find(params[:task_id])
   task.destroy
+  update_project_progress(params[:id])
   redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
 end
 
@@ -106,12 +110,16 @@ post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進�
   task = Task.find(params[:task_id])
   task.progress = params[:progress]
   task.save
-  all_tasks = Task.where(project_id: project.id)
-  all_tasks_count = all_tasks.count
-  completed_tasks_count = all_tasks.where(progress: 100).count
-  project.progress = calculate_progress(all_tasks_count, completed_tasks_count)
-  project.save
+  update_project_progress(params[:id])
   redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
+end
+
+def update_project_progress(id = nil)
+  project = Project.find(id)
+  all_tasks = Task.where(project_id: project.id)
+  completed_tasks = all_tasks.where(progress: 100)
+  project.progress = calculate_progress(all_tasks.count, completed_tasks.count)
+  project.save
 end
 
 def calculate_progress(all_tasks = nil, completed_tasks = nil)
