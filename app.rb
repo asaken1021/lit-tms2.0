@@ -111,7 +111,6 @@ post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進�
   completed_tasks_count = all_tasks.where(progress: 100).count
   project.progress = calculate_progress(all_tasks_count, completed_tasks_count)
   project.save
-  binding.pry
   redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
 end
 
