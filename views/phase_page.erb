@@ -1,5 +1,24 @@
 <div class="container">
   <h2 class="tms-project-title"><%= @project.name %></h2>
+  <h4 class="tms-project-progress"><%= @project.progress.to_s.slice(0, 4) %>%</h4>
+  <div id="progress-chart"></div>
+  <script>
+    var chart = c3.generate({
+      bindto: '#progress-chart',
+      size: {
+        width: 150,
+        height: 150
+      },
+      data: {
+        columns: [
+          ['完了', <%= @project.progress %>],
+          ['未完了', <%= 100 - @project.progress %>]
+        ],
+        type: 'pie',
+        order: null
+      }
+    });
+  </script>
   <table class="table table-bordered">
     <thead class="thead-light">
       <tr>
@@ -20,7 +39,7 @@
   <table class="table table-bordered">
     <thead class="thead-light">
       <tr>
-        <th scope="col">タスク名</th>
+        <th scope="col">タスク名 (<%= @completed_tasks_count %>/<%= @tasks_count %>)</th>
         <th scope="col">メモ</th>
         <th scope="col">進捗</th>
         <th scope="col"></th>
