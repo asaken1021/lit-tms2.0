@@ -42,13 +42,17 @@ end
 post '/projects/:id/create_phase' do #フェーズ作成
   project = Project.find(params[:id])
   deadline_date = params[:deadline_date].split('-')
-  if Date.valid_date?(deadline_date[0].to_i, deadline_date[1].to_i, deadline_date[2].to_i)
-    Phase.create(
-      name: params[:phase_name],
-      deadline: Date.parse(params[:deadline_date]),
-      project_id: project.id
-    )
-    redirect to('/projects/' + project.id.to_s)
+  if deadline_date != nil
+    if Date.valid_date?(deadline_date[0].to_i, deadline_date[1].to_i, deadline_date[2].to_i)
+      Phase.create(
+        name: params[:phase_name],
+        deadline: Date.parse(params[:deadline_date]),
+        project_id: project.id
+      )
+      redirect to('/projects/' + project.id.to_s)
+    else
+      redirect to('/projects/' + project.id.to_s)
+    end
   else
     redirect to('/projects/' + project.id.to_s)
   end
