@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="tms-project-title"><%= @project.name %></h2>
+  <h2 class="tms-project-title"><%= @project.name %>: <%= @selected_phase.name %></h2>
   <h4 class="tms-project-progress"><%= @project.progress.to_s.slice(0, 4) %>%</h4>
   <div id="progress-chart"></div>
   <script>
@@ -68,7 +68,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="label1">タスクの進捗度編集：<%= task.name %></h5>
+                  <h5 class="modal-title" id="label1">タスクの進捗度編集: <%= task.name %></h5>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
