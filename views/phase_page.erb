@@ -35,7 +35,7 @@
       <% end %>
     </tbody>
   </table>
-  <a class="btn btn-primary" href="/projects/<%= @project.id %>/create_phase">新規フェーズ作成</a><br><br>
+  <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button><br><br>
   <table class="table table-bordered">
     <thead class="thead-light">
       <tr>
@@ -65,5 +65,60 @@
       <% end %>
     </tbody>
   </table>
-  <a class="btn btn-primary" href="/projects/<%= @project.id %>/<%= @selected_phase.id %>/create_task">新規タスク作成</a>
+  <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-task-modal">新規タスク作成</button>
+
+  <form action="/projects/<%= @project.id %>/create_phase" method="post">
+    <div class="modal fade" id="create-phase-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="label1">新規フェーズ作成</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <input class="form-control" type="text" name="phase_name" placeholder="フェーズ名">
+                <input class="form-control" type="text" name="deadline_date" placeholder="締め切り日付">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+            <input class="form-control btn btn-primary" type="submit" value="作成">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/create_task" method="post">
+    <div class="modal fade" id="create-task-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="label1">新規タスク作成</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <input class="form-control" type="text" name="task_name" placeholder="タスク名">
+                <input class="form-control" type="text" name="task_memo" placeholder="メモ">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+            <input class="form-control btn btn-primary" type="submit" value="作成">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
 </div>
