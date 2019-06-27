@@ -11,6 +11,9 @@ end
 
 class Phase < ActiveRecord::Base
   has_many :tasks
+  validates :deadline,
+    presence: true,
+    length: { is: 10 }
 end
 
 class Task < ActiveRecord::Base
