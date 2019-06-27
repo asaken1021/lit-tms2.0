@@ -127,5 +127,8 @@ def update_project_progress(id = nil)
 end
 
 def calculate_progress(all_tasks = nil, completed_tasks = nil)
+  if all_tasks == 0
+    return 0
+  end
   return (completed_tasks.to_f / all_tasks.to_f * 100)
 end
