@@ -117,10 +117,17 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col">
-                <input class="form-control" type="text" name="phase_name" placeholder="フェーズ名">
-                <input class="form-control" type="text" name="deadline_date" placeholder="締め切り日付">
-              </div>
+					    <div class="col">
+						    <input class="form-control" type="text" name="phase_name" placeholder="フェーズ名">
+                <input class="form-control datetimepicker-input" id="datetimepicker1" type="text" name="deadline_date" placeholder="締め切り日付" data-toggle="datetimepicker" data-target="#datetimepicker1">
+					    </div>
+              <script>
+                $(function () {
+                  $('#datetimepicker1').datetimepicker({
+                    format: 'L'
+                  });
+                });
+              </script>
             </div>
           </div>
           <div class="modal-footer">
