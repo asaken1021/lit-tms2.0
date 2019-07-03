@@ -7,10 +7,18 @@
       <p class="card-text">作成されているプロジェクトの一覧</p>
     </div>
   </div>
-  <% @projects.each do |project| %>
+  <% if @projects.count != 0 %>
+    <% @projects.each do |project| %>
+      <div class="card text-center">
+        <div class="card-body">
+          <a href="/projects/<%= project.id %>"><h4 class="card-title"><%= project.name %></h4></a>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
     <div class="card text-center">
       <div class="card-body">
-        <a href="/projects/<%= project.id %>"><h4 class="card-title"><%= project.name %></h4></a>
+        <h4 class="card-title">作成されているプロジェクトはありません</h4>
       </div>
     </div>
   <% end %>

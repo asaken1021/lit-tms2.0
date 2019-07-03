@@ -76,11 +76,12 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col">
-                      <input class="form-control-range" id="range" type="range" name="progress" min="0" max="100" value="<%= task.progress %>">
-                      <span id="value"><%= task.progress %>%</span>
+                      <input class="form-control-range" id="range<%= task.id %>" type="range" name="progress" min="0" max="100" value="<%= task.progress %>">
+                      <span id="value<%= task.id %>"><%= task.progress %>%</span>
                       <script>
-                        var elem = document.getElementById('range');
-                        var target = document.getElementById('value');
+                        console.log("load range<%= task.id %> js");
+                        var elem = document.getElementById('range<%= task.id %>');
+                        var target = document.getElementById('value<%= task.id %>');
                         var rangeValue = function (elem, target) {
                           return function(evt){
                             target.innerHTML = elem.value + '%';
