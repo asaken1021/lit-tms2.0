@@ -7,3 +7,11 @@
 .tms-project-progress {
   text-align: center;
 }
+
+.navbar-form-inline-item-right-spacing {
+  margin-right: 3px;
+}
+
+.invisible-form {
+  display: none;
+}

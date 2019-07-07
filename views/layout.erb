@@ -31,7 +31,102 @@
 					</ul>
 				</div>
 			</div>
+			<form class="form-inline">
+				<% unless session[:user] %>
+					<button class="btn btn-primary navbar-form-inline-item-right-spacing" type="button" data-toggle="modal" data-target="#sign-up-modal">新規登録</button>
+					<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-in-modal">サインイン</button>
+				<% else %>
+					<span class="navbar-text text-body navbar-form-inline-item-right-spacing">ようこそ、<%= User.find(session[:user]).name %> さん</span>
+					<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-out-modal">サインアウト</button>
+				<% end %>
+			</form>
 		</nav>
+		<br><br>
     <%= yield %>
+
+		<form action="/sign_up" method="post">
+    	<div class="modal fade" id="sign-up-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        	<div class="modal-content">
+          	<div class="modal-header">
+            	<h5 class="modal-title" id="label1">新規ユーザー登録</h5>
+            	<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+  	            <span aria-hidden="true">&times;</span>
+	            </button>
+          	</div>
+          	<div class="modal-body">
+            	<div class="row">
+              	<div class="col">
+									<input class="form-control" type="text" name="name" placeholder="表示名（ニックネーム）">
+	                <input class="form-control" type="text" name="mail" placeholder="メールアドレス">
+									<input class="form-control" type="password" name="password" placeholder="パスワード（8文字以上24文字以内）">
+									<input class="form-control" type="password" name="password_confirmation" placeholder="パスワード（確認）">
+									<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+              	</div>
+            	</div>
+          	</div>
+          	<div class="modal-footer">
+            	<button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+          	  <input class="form-control btn btn-primary" type="submit" value="登録">
+          	</div>
+        	</div>
+      	</div>
+    	</div>
+  	</form>
+
+		<form action="/sign_in" method="post">
+    	<div class="modal fade" id="sign-in-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        	<div class="modal-content">
+          	<div class="modal-header">
+            	<h5 class="modal-title" id="label1">サインイン</h5>
+            	<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+  	            <span aria-hidden="true">&times;</span>
+	            </button>
+          	</div>
+          	<div class="modal-body">
+            	<div class="row">
+              	<div class="col">
+	                <input class="form-control" type="text" name="mail" placeholder="メールアドレス">
+									<input class="form-control" type="password" name="password" placeholder="パスワード">
+									<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+              	</div>
+            	</div>
+          	</div>
+          	<div class="modal-footer">
+            	<button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+          	  <input class="form-control btn btn-primary" type="submit" value="サインイン">
+          	</div>
+        	</div>
+      	</div>
+    	</div>
+  	</form>
+
+		<form action="/sign_out" method="post">
+    	<div class="modal fade" id="sign-out-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        	<div class="modal-content">
+          	<div class="modal-header">
+            	<h5 class="modal-title" id="label1">サインアウト</h5>
+            	<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+  	            <span aria-hidden="true">&times;</span>
+	            </button>
+          	</div>
+          	<div class="modal-body">
+            	<div class="row">
+              	<div class="col">
+	                <p>本当にサインアウトしますか？</p>
+									<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+              	</div>
+            	</div>
+          	</div>
+          	<div class="modal-footer">
+            	<button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+          	  <input class="form-control btn btn-primary" type="submit" value="サインアウト">
+          	</div>
+        	</div>
+      	</div>
+    	</div>
+  	</form>
 	</body>
 </html>

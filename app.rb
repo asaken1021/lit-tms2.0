@@ -5,8 +5,49 @@ require 'sinatra/reloader' if development?
 require 'sinatra/activerecord'
 require './models'
 
+require 'webrick/https'
+require 'openssl'
+require 'socket'
+
+if Socket.gethostname == 'sinatra-tms2'
+  ssl_options = {
+    SSLEnable: true,
+    SSLCertificate: OpenSSL::X509::Certificate.new(File.open('/var/SSLCert/cert.pem').read),
+    SSLPrivateKey: OpenSSL::PKey::RSA.new(File.open('/var/SSLCert/privkey.pem').read)
+  }
+  set :server_settings, ssl_options
+end
+
+enable :sessions
+
 get '/' do
   erb :index
+end
+
+post '/sign_up' do #ユーザー作成
+  @user = User.create(
+    mail: params[:mail],
+    name: params[:name],
+    password: params[:password],
+    password_confirmation: params[:password_confirmation]
+  )
+  if @user.persisted?
+    session[:user] = @user.id
+  end
+  redirect to(params[:redirect_to])
+end
+
+post '/sign_in' do #ユーザーサインイン
+  user = User.find_by(mail: params[:mail])
+  if user && user.authenticate(params[:password])
+    session[:user] = user.id
+  end
+  redirect to(params[:redirect_to])
+end
+
+post '/sign_out' do #ユーザーサインアウト
+  session[:user] = nil
+  redirect to(params[:redirect_to])
 end
 
 get '/create_project' do #プロジェクト作成ページ
