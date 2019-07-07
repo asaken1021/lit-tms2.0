@@ -12,6 +12,10 @@
   white-space: pre-wrap;
 }
 
+.margin-right-3px {
+  margin-right: 3px;
+}
+
 .invisible-form {
   display: none;
 }

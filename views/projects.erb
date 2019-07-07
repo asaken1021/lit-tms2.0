@@ -18,7 +18,11 @@
   <% else %>
     <div class="card text-center">
       <div class="card-body">
-        <h4 class="card-title">作成されているプロジェクトはありません</h4>
+        <% unless session[:user] %>
+          <h4 class="card-title">一覧を表示するには、サインインしてください</h4>
+        <% else %>
+          <h4 class="card-title">作成されているプロジェクトはありません</h4>
+        <% end %>
       </div>
     </div>
   <% end %>

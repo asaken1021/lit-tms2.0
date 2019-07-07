@@ -20,6 +20,12 @@ end
 
 enable :sessions
 
+helpers do
+  def current_user
+    User.find_by(id: session[:user])
+  end
+end
+
 get '/' do
   erb :index
 end
@@ -55,16 +61,26 @@ get '/create_project' do #プロジェクト作成ページ
 end
 
 post '/create_project' do #プロジェクト作成
-  project = Project.create(
-    name: params[:project_name],
-    progress: 0
-  )
-  redirect '/projects'
+  if current_user == nil
+    erb :error
+  else
+    project = Project.create(
+      name: params[:project_name],
+      progress: 0,
+      user_id: current_user.id
+    )
+    redirect '/projects'
+  end
 end
 
 get '/projects' do #プロジェクト一覧
-  @projects = Project.all
-  erb :projects
+  if current_user == nil
+    @projects = Project.where(user_id: 0) #NoMethodError対策
+    erb :projects
+  else
+    @projects = Project.where(user_id: current_user.id)
+    erb :projects
+  end
 end
 
 get '/projects/:id' do #プロジェクトページ
@@ -72,30 +88,30 @@ get '/projects/:id' do #プロジェクトページ
   @phases = Phase.where(project_id: @project.id)
   all_tasks = Task.where(project_id: @project.id)
   update_project_progress(params[:id])
+  @is_valid_user = check_user_project(@project.id)
   erb :project_page
-end
-
-get '/projects/:id/create_phase' do #フェーズ作成ページ
-  @project = Project.find(params[:id])
-  erb :create_phase
 end
 
 post '/projects/:id/create_phase' do #フェーズ作成
   project = Project.find(params[:id])
-  deadline_date = params[:deadline_date].split('/')
-  if deadline_date != nil
-    if Date.valid_date?(deadline_date[0].to_i, deadline_date[1].to_i, deadline_date[2].to_i)
-      Phase.create(
-        name: params[:phase_name],
-        deadline: Date.parse(params[:deadline_date]),
-        project_id: project.id
-      )
-      redirect to('/projects/' + project.id.to_s)
+  if check_user_project(project.id)
+    deadline_date = params[:deadline_date].split('/')
+    if deadline_date != nil
+      if Date.valid_date?(deadline_date[0].to_i, deadline_date[1].to_i, deadline_date[2].to_i)
+        Phase.create(
+          name: params[:phase_name],
+          deadline: Date.parse(params[:deadline_date]),
+          project_id: project.id
+        )
+        redirect to('/projects/' + project.id.to_s)
+      else
+        redirect to('/projects/' + project.id.to_s)
+      end
     else
       redirect to('/projects/' + project.id.to_s)
     end
   else
-    redirect to('/projects/' + project.id.to_s)
+    erb :error
   end
 end
 
@@ -110,53 +126,53 @@ get '/projects/:id/:phase_id' do #フェーズページ
     @completed_tasks_count = 0
   end
   update_project_progress(params[:id])
+  @is_valid_user = check_user_project(@project.id)
   erb :phase_page
-end
-
-get '/projects/:id/:phase_id/create_task' do #タスク作成ページ
-  @project = Project.find(params[:id])
-  @selected_phase = Phase.find(params[:phase_id])
-  erb :create_task
 end
 
 post '/projects/:id/:phase_id/create_task' do #タスク作成
   project = Project.find(params[:id])
-  phase = Phase.find(params[:phase_id])
-  Task.create(
-    name: params[:task_name],
-    memo: params[:task_memo],
-    progress: 0,
-    project_id: project.id,
-    phase_id: phase.id
-  )
-  update_project_progress(params[:id])
-  redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
+  if check_user_project(project.id)
+    phase = Phase.find(params[:phase_id])
+    Task.create(
+      name: params[:task_name],
+      memo: params[:task_memo],
+      progress: 0,
+      project_id: project.id,
+      phase_id: phase.id
+    )
+    update_project_progress(params[:id])
+    redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
+  else
+    erb :error
+  end
 end
 
 post '/projects/:id/:phase_id/remove_task/:task_id' do #タスクの削除
   project = Project.find(params[:id])
-  phase = Phase.find(params[:phase_id])
-  task = Task.find(params[:task_id])
-  task.destroy
-  update_project_progress(params[:id])
-  redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
-end
-
-get '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進捗度の編集ページ
-  @project = Project.find(params[:id])
-  @selected_phase = Phase.find(params[:phase_id])
-  @task = Task.find(params[:task_id])
-  erb :edit_progress_task
+  if check_user_project(project.id)
+    phase = Phase.find(params[:phase_id])
+    task = Task.find(params[:task_id])
+    task.destroy
+    update_project_progress(params[:id])
+    redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
+  else
+    erb :error
+  end
 end
 
 post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進捗度の編集
   project = Project.find(params[:id])
-  phase = Phase.find(params[:phase_id])
-  task = Task.find(params[:task_id])
-  task.progress = params[:progress]
-  task.save
-  update_project_progress(params[:id])
-  redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
+  if check_user_project(project.id)
+    phase = Phase.find(params[:phase_id])
+    task = Task.find(params[:task_id])
+    task.progress = params[:progress]
+    task.save
+    update_project_progress(params[:id])
+    redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
+  else
+    erb :error
+  end
 end
 
 def update_project_progress(id = nil)
@@ -172,4 +188,13 @@ def calculate_progress(all_tasks = nil, completed_tasks = nil)
     return 0
   end
   return (completed_tasks.to_f / all_tasks.to_f * 100)
+end
+
+def check_user_project(project_id = nil)
+  if current_user != nil
+    if current_user.id == project_id
+      return true
+    end
+  end
+  return false
 end

@@ -35,7 +35,9 @@
       <% end %>
     </tbody>
   </table>
-  <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button>
+  <% if @is_valid_user %>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button>
+  <% end %>
 
   <form action="/projects/<%= @project.id %>/create_phase" method="post">
     <div class="modal fade" id="create-phase-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">

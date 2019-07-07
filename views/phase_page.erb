@@ -35,7 +35,9 @@
       <% end %>
     </tbody>
   </table>
-  <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button><br><br>
+  <% if @is_valid_user %>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button><br><br>
+  <% end %>
   <table class="table table-bordered">
     <thead class="thead-light">
       <tr>
@@ -51,15 +53,21 @@
           <td class="align-middle"><%= task.name %></td>
           <td class="align-middle"><%= task.memo %></td>
           <td class="align-middle">
-            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#edit-task-<%= task.id %>-progress-modal">
+            <% if @is_valid_user %>
+              <button class="btn btn-link" type="button" data-toggle="modal" data-target="#edit-task-<%= task.id %>-progress-modal">
+            <% end %>
               <%= task.progress %>
               %
             </button>
           </td>
           <td>
-            <form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/remove_task/<%= task.id %>" method="post">
-              <input class="btn btn-primary" type="submit" value="削除">
-            </form>
+            <% if @is_valid_user %>
+              <form action="/projects/<%= @project.id %>/<%= @selected_phase.id %>/remove_task/<%= task.id %>" method="post">
+                <input class="btn btn-primary" type="submit" value="削除">
+              </form>
+            <% else %>
+              <input class="btn btn-primary" type="submit" value="削除" disabled>
+            <% end %>
           </td>
         </tr>
 
@@ -104,7 +112,10 @@
       <% end %>
     </tbody>
   </table>
-  <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-task-modal">新規タスク作成</button>
+
+  <% if @is_valid_user %>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-task-modal">新規タスク作成</button>
+  <% end %>
 
   <form action="/projects/<%= @project.id %>/create_phase" method="post">
     <div class="modal fade" id="create-phase-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
