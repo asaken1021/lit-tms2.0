@@ -9,7 +9,7 @@ require 'webrick/https'
 require 'openssl'
 require 'socket'
 
-if Socket.gethostname == 'sinatra-tms2'
+if Socket.gethostname == 'sinatra-tms2.0.local'
   ssl_options = {
     SSLEnable: true,
     SSLCertificate: OpenSSL::X509::Certificate.new(File.open('/var/SSLCert/cert.pem').read),
