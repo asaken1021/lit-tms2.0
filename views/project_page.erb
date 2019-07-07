@@ -35,7 +35,7 @@
       <% end %>
     </tbody>
   </table>
-  <% if @is_valid_user %>
+  <% if @status == 0 %>
     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button>
   <% end %>
 

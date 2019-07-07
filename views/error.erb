@@ -1,2 +1,9 @@
-<p>内部エラーが発生しました。</p>
-<p>よくあるエラー）サインインしておらず、例外処理が未実装</p>
+<div class="container">
+  <% if @error_code == 1 %>
+    <h2 class="tms-project-title text-danger">エラー：セッション情報がありません</h2>
+    <p class="error-reason-text">セッション情報がないため、処理できませんでした。サインインしてください。</p>
+  <% elsif @error_code == 2 %>
+    <h2 class="tms-project-title text-danger">エラー：アカウントが違います</h2>
+    <p class="error-reason-text">あなたはプロジェクトの作成者ではないため、編集できません。</p>
+  <% end %>
+</div>

@@ -62,6 +62,7 @@ end
 
 post '/create_project' do #プロジェクト作成
   if current_user == nil
+    @error_code = 1
     erb :error
   else
     project = Project.create(
@@ -88,13 +89,14 @@ get '/projects/:id' do #プロジェクトページ
   @phases = Phase.where(project_id: @project.id)
   all_tasks = Task.where(project_id: @project.id)
   update_project_progress(params[:id])
-  @is_valid_user = check_user_project(@project.id)
+  @status = check_user_project(@project.id)
   erb :project_page
 end
 
 post '/projects/:id/create_phase' do #フェーズ作成
   project = Project.find(params[:id])
-  if check_user_project(project.id)
+  @error_code = check_user_project(project.id)
+  if @error_code == 0
     deadline_date = params[:deadline_date].split('/')
     if deadline_date != nil
       if Date.valid_date?(deadline_date[0].to_i, deadline_date[1].to_i, deadline_date[2].to_i)
@@ -126,13 +128,14 @@ get '/projects/:id/:phase_id' do #フェーズページ
     @completed_tasks_count = 0
   end
   update_project_progress(params[:id])
-  @is_valid_user = check_user_project(@project.id)
+  @status = check_user_project(@project.id)
   erb :phase_page
 end
 
 post '/projects/:id/:phase_id/create_task' do #タスク作成
   project = Project.find(params[:id])
-  if check_user_project(project.id)
+  @error_code = check_user_project(project.id)
+  if @error_code == 0
     phase = Phase.find(params[:phase_id])
     Task.create(
       name: params[:task_name],
@@ -150,7 +153,8 @@ end
 
 post '/projects/:id/:phase_id/remove_task/:task_id' do #タスクの削除
   project = Project.find(params[:id])
-  if check_user_project(project.id)
+  @error_code = check_user_project(project.id)
+  if @error_code == 0
     phase = Phase.find(params[:phase_id])
     task = Task.find(params[:task_id])
     task.destroy
@@ -163,7 +167,8 @@ end
 
 post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進捗度の編集
   project = Project.find(params[:id])
-  if check_user_project(project.id)
+  @error_code = check_user_project(project.id)
+  if @error_code == 0
     phase = Phase.find(params[:phase_id])
     task = Task.find(params[:task_id])
     task.progress = params[:progress]
@@ -193,8 +198,12 @@ end
 def check_user_project(project_id = nil)
   if current_user != nil
     if current_user.id == project_id
-      return true
+      return 0
+    else
+      return 2
     end
+  else
+    return 1
   end
-  return false
+  return -1
 end

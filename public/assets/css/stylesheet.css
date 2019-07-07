@@ -19,3 +19,8 @@
 .invisible-form {
   display: none;
 }
+
+.error-reason-text {
+  margin-left: 60px;
+  margin-right: 60px;
+}
