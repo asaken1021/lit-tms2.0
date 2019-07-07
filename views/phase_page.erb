@@ -55,10 +55,10 @@
           <td class="align-middle">
             <% if @is_valid_user %>
               <button class="btn btn-link" type="button" data-toggle="modal" data-target="#edit-task-<%= task.id %>-progress-modal">
-            <% end %>
               <%= task.progress %>
               %
-            </button>
+              </button>
+            <% end %>
           </td>
           <td>
             <% if @is_valid_user %>
