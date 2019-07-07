@@ -8,8 +8,8 @@
   text-align: center;
 }
 
-.navbar-form-inline-item-right-spacing {
-  margin-right: 3px;
+.pre-wrap {
+  white-space: pre-wrap;
 }
 
 .invisible-form {

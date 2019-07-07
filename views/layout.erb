@@ -21,7 +21,7 @@
 			<div class="container">
 				<a href="/" class="navbar-brand">TMS 2.0</a>
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
+					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a href="/" class="nav-link">ホーム</a>
 						</li>
@@ -29,17 +29,26 @@
 							<a href="/projects" class="nav-link">プロジェクト一覧</a>
 						</li>
 					</ul>
+					<ul class="navbar-nav">
+						<% unless session[:user] %>
+							<li class="nav-item">
+								<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-up-modal">新規登録</button>
+							</li>
+							<li class="nav-item">
+								<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-in-modal">サインイン</button>
+							</li>
+						<% else %>
+							<li class="nav-item">
+								<span class="navbar-text text-body pre-wrap">ようこそ、<%= User.find(session[:user]).name %> さん  </span>
+							</li>
+							<li class="nav-item">
+								<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-out-modal">サインアウト</button>
+							</li>
+						<% end %>
+					</ul>
 				</div>
 			</div>
-			<form class="form-inline">
-				<% unless session[:user] %>
-					<button class="btn btn-primary navbar-form-inline-item-right-spacing" type="button" data-toggle="modal" data-target="#sign-up-modal">新規登録</button>
-					<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-in-modal">サインイン</button>
-				<% else %>
-					<span class="navbar-text text-body navbar-form-inline-item-right-spacing">ようこそ、<%= User.find(session[:user]).name %> さん</span>
-					<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-out-modal">サインアウト</button>
-				<% end %>
-			</form>
+
 		</nav>
 		<br><br>
     <%= yield %>
