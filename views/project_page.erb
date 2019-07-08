@@ -7,7 +7,11 @@
           <div class="tms-project-progress-content-text col">
             <p class="tms-project-progress-text">全体進捗率</p>
           </div>
-          <h4 class="tms-project-progress col-md-auto"><%= @project.progress.to_s.slice(0, 4) %>%</h4>
+          <% if @project.progress == 100 %>
+            <h4 class="tms-project-progress col-md-auto"><%= @project.progress.to_s.slice(0, 5) %>%</h4>
+          <% else %>
+            <h4 class="tms-project-progress col-md-auto"><%= @project.progress.to_s.slice(0, 4) %>%</h4>
+          <% end %>
         </div>
       </div>
     </div>
