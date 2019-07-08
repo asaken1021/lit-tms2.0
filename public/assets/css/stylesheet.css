@@ -1,11 +1,31 @@
+.project-description {
+  border-bottom: solid black 2px;
+}
+
 .tms-project-title {
-  margin-left: 45px;
-  margin-top: 40px;
   font-size: 40px;
 }
 
+.tms-project-progress-content {
+  height: max-content;
+}
+
 .tms-project-progress {
-  text-align: center;
+  font-size: 40px;
+  text-align: right;
+}
+
+.tms-project-progress-content-text {
+  margin-bottom: .5rem;
+}
+
+.tms-project-progress-text {
+  font-size: 25px;
+  text-align: right;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .pre-wrap {
@@ -23,4 +43,10 @@
 .error-reason-text {
   margin-left: 60px;
   margin-right: 60px;
+}
+
+#progress-chart {
+  width: max-content;
+  height: max-content;
+  margin: 0 auto;
 }
