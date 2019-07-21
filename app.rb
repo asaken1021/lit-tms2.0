@@ -15,7 +15,8 @@ if Socket.gethostname == 'sinatra-tms2.0.local'
   ssl_options = {
     SSLEnable: true,
     SSLCertificate: OpenSSL::X509::Certificate.new(File.open('/var/SSLCert/cert.pem').read),
-    SSLPrivateKey: OpenSSL::PKey::RSA.new(File.open('/var/SSLCert/privkey.pem').read)
+    SSLPrivateKey: OpenSSL::PKey::RSA.new(File.open('/var/SSLCert/privkey.pem').read),
+    SSLVerifyClient: OpenSSL::SSL::VERIFY_NONE
   }
   set :server_settings, ssl_options
 end
