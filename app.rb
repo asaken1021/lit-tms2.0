@@ -12,6 +12,7 @@ require 'socket'
 require 'open-uri'
 require 'net/http'
 require 'json'
+require 'securerandom'
 
 if Socket.gethostname == 'sinatra-tms2.0.local'
   ssl_options = {
@@ -233,7 +234,6 @@ end
 post '/send_test_notify' do
   user = User.find_by(id: current_user.id)
   if user.user_line_id != ""
-    logger.info File.open('/home/lit_users/workspace/LINE_BOT_URL').read
     BotURI = URI(File.open('/home/lit_users/workspace/LINE_BOT_URL').read)
     data = {
       message: "Test Notification",
@@ -246,8 +246,33 @@ post '/send_test_notify' do
     req['Content-Type'] = "application/json"
     req['Accept'] = "application/json"
     res = https.request(req)
-    logger.info res
-    logger.info req.body
     redirect '/send_test_notify'
   end
+end
+
+##### LINE アカウント連携 #####
+get '/line_link' do
+  @linkToken = params[:linkToken]
+  erb :line_link
+end
+
+post '/line_link' do
+  linkToken = params[:linkToken]
+  user = User.find_by(mail: params[:mail])
+  if user && user.authenticate(params[:password])
+    nonce = SecureRandom.hex(256)
+    Nonce.create(
+      nonce: nonce,
+      user_id: user.id
+    )
+    redirect to('https://access.line.me/dialog/bot/accountLink?linkToken=' + linkToken + '&nonce=' + nonce)
+  end
+end
+
+post '/line_link_completed' do
+  request.body.rewind
+  params = JSON.parse(request.body.string)
+  user = User.find_by(id: Nonce.find_by(nonce: params[:nonce]))
+  user.user_line_id = params[:userId]
+  user.save(:validate => false)
 end

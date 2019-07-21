@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      LINE アカウント連携
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">LINE アカウント連携</h4>
+      <p class="card-text">LINEに通知を送信するためには、LINEアカウントと連携する必要があります。連携するには、TMS2.0のアカウントでサインインしてください。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#line-link-modal">サインイン</button>
+    </div>
+  </div>
+
+  <form action="/line_link" method="post">
+    	<div class="modal fade" id="line-link-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        	<div class="modal-content">
+          	<div class="modal-header">
+            	<h5 class="modal-title" id="label1">サインイン</h5>
+            	<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+  	            <span aria-hidden="true">&times;</span>
+	            </button>
+          	</div>
+          	<div class="modal-body">
+            	<div class="row">
+              	<div class="col">
+	                <input class="form-control" type="text" name="mail" placeholder="メールアドレス">
+									<input class="form-control" type="password" name="password" placeholder="パスワード">
+									<input class="invisible-form" name="linkToken" value="<%= @linkToken %>">
+              	</div>
+            	</div>
+          	</div>
+          	<div class="modal-footer">
+            	<button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+          	  <input class="form-control btn btn-primary" type="submit" value="サインイン">
+          	</div>
+        	</div>
+      	</div>
+    	</div>
+  	</form>
+
+</div>

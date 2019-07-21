@@ -24,3 +24,5 @@ group :production do
 end
 
 gem 'pry'
+
+gem 'whenever'

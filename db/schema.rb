@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_105827) do
+ActiveRecord::Schema.define(version: 2019_07_21_144333) do
+
+  create_table "nonces", force: :cascade do |t|
+    t.string "nonce"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "phases", force: :cascade do |t|
     t.string "name"
