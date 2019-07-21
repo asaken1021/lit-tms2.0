@@ -257,6 +257,7 @@ get '/line_link' do
 end
 
 post '/line_link' do
+  binding.pry
   linkToken = params[:linkToken]
   user = User.find_by(mail: params[:mail])
   if user && user.authenticate(params[:password])
@@ -265,7 +266,6 @@ post '/line_link' do
       nonce: nonce,
       user_id: user.id
     )
-    binding.pry
     redirect to('https://access.line.me/dialog/bot/accountLink?linkToken=' + linkToken + '&nonce=' + nonce)
   end
 end
