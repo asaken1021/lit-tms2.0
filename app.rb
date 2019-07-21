@@ -9,6 +9,8 @@ require 'webrick/https'
 require 'openssl'
 require 'socket'
 
+require 'line/bot'
+
 if Socket.gethostname == 'sinatra-tms2.0.local'
   ssl_options = {
     SSLEnable: true,
@@ -24,6 +26,13 @@ helpers do
   def current_user
     User.find_by(id: session[:user])
   end
+end
+
+def line_client
+  @client ||= Line::Bot::Client.new{
+    config.channel_secret = 'b151f4825e63df29ff610c428031f3c0'
+    config.channel_token = 'xKidAsXBQ+s3dKii7/FLbULeoNzj5jIN4wmkgRNtcNZBGGR+0x62wtBC0vpA0S8GP0wZoKdNuYOadeLNR3EV13FpuM7IONRA2YAsCc4oAsLRJGnV2pt9hjX2MgRzVWnUqH3vqdFgk8qLjDpiaf7MxgdB04t89/1O/w1cDnyilFU='
+  }
 end
 
 get '/' do
@@ -206,4 +215,42 @@ def check_user_project(project_id = nil)
     return 1
   end
   return -1
+end
+
+##### LINE Bot #####
+post '/send_line_push' do
+  body = request.body.read
+
+  signature = request.env['HTTP_X_LINE_SIGNATURE']
+  unless client.validate_signature(body, signature)
+    error 400 do 'Bad Request' end
+  end
+
+
+end
+
+post '/line_bot' do
+  body = request.body.read
+
+  signature = request.env['HTTP_X_LINE_SIGNATURE']
+  unless client.validate_signature(body, signature)
+    error 400 do 'Bad Request' end
+  end
+
+  events = client.parse_events_from(body)
+  events.each do | event |
+    case event
+    when Line::Bot::Event::Message
+      case event.type
+      when Line::Bot::Event::MessageType::Text
+        message = {
+          type: 'text',
+          text: event.message['text']
+        }
+        client.reply_message(event['replyToken'], message)
+      end
+    end
+  end
+
+  'OK'
 end
