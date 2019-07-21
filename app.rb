@@ -265,6 +265,7 @@ post '/line_link' do
       nonce: nonce,
       user_id: user.id
     )
+    binding.pry
     redirect to('https://access.line.me/dialog/bot/accountLink?linkToken=' + linkToken + '&nonce=' + nonce)
   end
 end
