@@ -24,4 +24,3 @@ group :production do
 end
 
 gem 'pry'
-gem 'line-bot-api'
