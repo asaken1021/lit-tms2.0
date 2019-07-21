@@ -260,7 +260,7 @@ post '/line_link' do
   linkToken = params[:linkToken]
   user = User.find_by(mail: params[:mail])
   if user && user.authenticate(params[:password])
-    nonce = SecureRandom.hex(172)
+    nonce = SecureRandom.hex(64)
     Nonce.create(
       nonce: nonce,
       user_id: user.id
