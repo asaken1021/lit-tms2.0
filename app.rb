@@ -9,6 +9,10 @@ require 'webrick/https'
 require 'openssl'
 require 'socket'
 
+require 'open-uri'
+require 'net/http'
+require 'json'
+
 if Socket.gethostname == 'sinatra-tms2.0.local'
   ssl_options = {
     SSLEnable: true,
@@ -35,7 +39,8 @@ post '/sign_up' do #ユーザー作成
     mail: params[:mail],
     name: params[:name],
     password: params[:password],
-    password_confirmation: params[:password_confirmation]
+    password_confirmation: params[:password_confirmation],
+    user_line_id: ""
   )
   if @user.persisted?
     session[:user] = @user.id
@@ -56,8 +61,20 @@ post '/sign_out' do #ユーザーサインアウト
   redirect to(params[:redirect_to])
 end
 
-get '/create_project' do #プロジェクト作成ページ
-  erb :create_project
+get '/user_settings' do #ユーザー設定ページ
+  erb :user_settings
+end
+
+post '/set_user_line_id' do #ユーザーのLINEユーザーIDの設定
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    user = User.find_by(id: current_user.id)
+    user.user_line_id = params[:line_id]
+    user.save(:validate => false)
+    redirect to(params[:redirect_to])
+  end
 end
 
 post '/create_project' do #プロジェクト作成
@@ -206,4 +223,31 @@ def check_user_project(project_id = nil)
     return 1
   end
   return -1
+end
+
+##### LINE Bot との連携 #####
+get '/send_test_notify' do
+  erb :line_bot_test
+end
+
+post '/send_test_notify' do
+  user = User.find_by(id: current_user.id)
+  if user.user_line_id != ""
+    logger.info File.open('/home/lit_users/workspace/LINE_BOT_URL').read
+    BotURI = URI(File.open('/home/lit_users/workspace/LINE_BOT_URL').read)
+    data = {
+      message: "Test Notification",
+      to: user.user_line_id
+    }.to_json
+    https = Net::HTTP.new(BotURI.host, BotURI.port)
+    https.use_ssl = true
+    req = Net::HTTP::Post.new(BotURI)
+    req.body = data
+    req['Content-Type'] = "application/json"
+    req['Accept'] = "application/json"
+    res = https.request(req)
+    logger.info res
+    logger.info req.body
+    redirect '/send_test_notify'
+  end
 end

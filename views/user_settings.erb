@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      ユーザー設定
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">LINEユーザーID</h4>
+      <p class="card-text">LINEに通知を送信するためには、LINEユーザーIDを登録する必要があります。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#set-user-line-id-modal">設定</button>
+    </div>
+  </div>
+
+  <form action="/set_user_line_id" method="post">
+    <div class="modal fade" id="set-user-line-id-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="label1">LINEユーザーIDの設定</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <input class="form-control" type="text" name="line_id" placeholder="LINEユーザーID">
+                <input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+            <input class="form-control btn btn-primary" type="submit" value="保存">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
