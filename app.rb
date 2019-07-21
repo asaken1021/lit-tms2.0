@@ -273,7 +273,6 @@ post '/line_link_completed' do
   request.body.rewind
   params = JSON.parse(request.body.string)
   user = User.find_by(id: Nonce.find_by(nonce: params['nonce']))
-  binding.pry
   user.user_line_id = params['userId']
   user.save(:validate => false)
 end
