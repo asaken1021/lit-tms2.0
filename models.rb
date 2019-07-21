@@ -36,3 +36,7 @@ class Task < ActiveRecord::Base
   validates :name,
     presence: true
 end
+
+class Nonce < ActiveRecord::Base
+
+end

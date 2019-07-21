@@ -257,7 +257,6 @@ get '/line_link' do
 end
 
 post '/line_link' do
-  binding.pry
   linkToken = params[:linkToken]
   user = User.find_by(mail: params[:mail])
   if user && user.authenticate(params[:password])
