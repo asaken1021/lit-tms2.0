@@ -63,7 +63,12 @@ post '/sign_out' do #ユーザーサインアウト
 end
 
 get '/user_settings' do #ユーザー設定ページ
-  erb :user_settings
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    erb :user_settings
+  end
 end
 
 post '/set_user_line_id' do #ユーザーのLINEユーザーIDの設定
