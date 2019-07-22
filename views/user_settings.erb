@@ -5,7 +5,9 @@
     </div>
     <div class="card-body">
       <h4 class="card-title">LINEユーザーID</h4>
-      <p class="card-text">LINEに通知を送信するためには、LINEユーザーIDを登録する必要があります。</p>
+      <p class="card-text">LINEに通知を送信するためには、LINEユーザーIDを登録する必要があります。<br>
+      現在のLINEユーザーID: <%= current_user.user_line_id %>
+      </p>
       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#set-user-line-id-modal">設定</button>
     </div>
   </div>
