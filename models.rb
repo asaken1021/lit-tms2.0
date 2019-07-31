@@ -40,3 +40,11 @@ end
 class Nonce < ActiveRecord::Base
 
 end
+
+class Notify_Day < ActiveRecord::Base
+
+end
+
+class Notify_Time < ActiveRecord::Base
+
+end

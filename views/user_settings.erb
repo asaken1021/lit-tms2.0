@@ -11,6 +11,13 @@
       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#set-user-line-id-modal">設定</button>
     </div>
   </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">LINEの通知設定</h4>
+      <p class="card-text">LINEに通知を送信する曜日と時間帯を設定します。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#set-user-line-notify-modal">設定</button>
+    </div>
+  </div>
 
   <form action="/set_user_line_id" method="post">
     <div class="modal fade" id="set-user-line-id-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
@@ -27,6 +34,100 @@
               <div class="col">
                 <input class="form-control" type="text" name="line_id" placeholder="LINEユーザーID">
                 <input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+            <input class="form-control btn btn-primary" type="submit" value="保存">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <form action="/set_user_line_notify" method="post">
+    <div class="modal fade" id="set-user-line-notify-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="label1">LINEの通知設定</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+            <div class="row">
+              <div class="col center">
+                <h4>曜日</h4>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_sun" value="notify_sun">
+                  <label class="form-check-label" for="notify_sun">日曜日</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_mon" value="notify_mon">
+                  <label class="form-check-label" for="notify_mon">月曜日</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_tue" value="notify_tue">
+                  <label class="form-check-label" for="notify_tue">火曜日</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_wed" value="notify_wed">
+                  <label class="form-check-label" for="notify_wed">水曜日</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_thu" value="notify_thu">
+                  <label class="form-check-label" for="notify_thu">木曜日</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_fri" value="notify_fri">
+                  <label class="form-check-label" for="notify_fri">金曜日</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_sat" value="notify_sat">
+                  <label class="form-check-label" for="notify_sat">土曜日</label>
+                </div>
+              </div>
+              <div class="col">
+                <h4>時間帯</h4>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_6to8" value="notify_6to8">
+                  <label class="form-check-label" for="notify_6to8">6時~8時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_8to10" value="notify_8to10">
+                  <label class="form-check-label" for="notify_8to10">8時~10時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_10to12" value="notify_10to12">
+                  <label class="form-check-label" for="notify_10to12">10時~12時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_12to14" value="notify_12to14">
+                  <label class="form-check-label" for="notify_12to14">12時~14時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_14to16" value="notify_14to16">
+                  <label class="form-check-label" for="notify_14to16">14時~16時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_16to18" value="notify_16to18">
+                  <label class="form-check-label" for="notify_16to18">16時~18時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_18to20" value="notify_18to20">
+                  <label class="form-check-label" for="notify_18to20">18時~20時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_20to22" value="notify_20to22">
+                  <label class="form-check-label" for="notify_20to22">20時~22時</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="notify_22to24" value="notify_22to24">
+                  <label class="form-check-label" for="notify_22to24">22時~24時</label>
+                </div>
               </div>
             </div>
           </div>

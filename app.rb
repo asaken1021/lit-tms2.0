@@ -67,6 +67,7 @@ get '/user_settings' do #ユーザー設定ページ
     @error_code = 1
     erb :error
   else
+    @notify_settings = Notify_Day.find_by(user_id: current_user.id)
     erb :user_settings
   end
 end
@@ -76,11 +77,47 @@ post '/set_user_line_id' do #ユーザーのLINEユーザーIDの設定
     @error_code = 1
     erb :error
   else
-    user = User.find_by(id: current_user.id)
-    user.user_line_id = params[:line_id]
-    user.save(:validate => false)
+    current_user.user_line_id = params[:line_id]
+    current_user.save(:validate => false)
     redirect to(params[:redirect_to])
   end
+end
+
+post '/set_user_line_notify' do
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    user_notify_days = Notify_Day.find_by(user_id: current_user.id)
+    user_notify_times = Notify_Time.find_by(user_id: current_user.id)
+    if user_notify_days == nil
+      user_notify_days = Notify_Day.create(
+        user_id: current_user.id,
+        is_sunday: false,
+        is_monday: false,
+        is_tuesday: false,
+        is_wednesday: false,
+        is_thursday: false,
+        is_friday: false,
+        is_saturday: false
+      )
+    end
+    if user_notify_times == nil
+      user_notify_times = Notify_Time.create(
+        user_id: current_user.id,
+        notify_6to8: false,
+        notify_8to10: false,
+        notify_10to12: false,
+        notify_12to14: false,
+        notify_14to16: false,
+        notify_16to18: false,
+        notify_18to20: false,
+        notify_20to22: false,
+        notify_22to24: false
+      )
+    end
+  end
+  redirect to(params[:redirect_to])
 end
 
 post '/create_project' do #プロジェクト作成
