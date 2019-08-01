@@ -67,7 +67,34 @@ get '/user_settings' do #ユーザー設定ページ
     @error_code = 1
     erb :error
   else
-    @notify_settings = Notify_Day.find_by(user_id: current_user.id)
+    @notify_days = Notify_Day.find_by(user_id: current_user.id)
+    @notify_times = Notify_Time.find_by(user_id: current_user.id)
+    if @notify_days == nil
+      @notify_days = Notify_Day.create(
+        user_id: current_user.id,
+        is_sunday: false,
+        is_monday: false,
+        is_tuesday: false,
+        is_wednesday: false,
+        is_thursday: false,
+        is_friday: false,
+        is_saturday: false
+      )
+    end
+    if @notify_times == nil
+      @notify_time = Notify_Time.create(
+        user_id: current_user.id,
+        notify_6to8: false,
+        notify_8to10: false,
+        notify_10to12: false,
+        notify_12to14: false,
+        notify_14to16: false,
+        notify_16to18: false,
+        notify_18to20: false,
+        notify_20to22: false,
+        notify_22to24: false
+      )
+    end
     erb :user_settings
   end
 end
@@ -83,7 +110,7 @@ post '/set_user_line_id' do #ユーザーのLINEユーザーIDの設定
   end
 end
 
-post '/set_user_line_notify' do
+post '/set_user_line_notify' do #ユーザーのLINE通知の曜日と時間設定
   if current_user == nil
     @error_code = 1
     erb :error
@@ -101,6 +128,48 @@ post '/set_user_line_notify' do
         is_friday: false,
         is_saturday: false
       )
+    else
+      if params[:notify_sun] != nil
+        user_notify_days.is_sunday = true
+      else
+        user_notify_days.is_sunday = false
+      end
+
+      if params[:notify_mon] != nil
+        user_notify_days.is_monday = true
+      else
+        user_notify_days.is_monday = false
+      end
+
+      if params[:notify_tue] != nil
+        user_notify_days.is_tuesday = true
+      else
+        user_notify_days.is_tuesday = false
+      end
+
+      if params[:notify_wed] != nil
+        user_notify_days.is_wednesday = true
+      else
+        user_notify_days.is_wednesday = false
+      end
+
+      if params[:notify_thu] != nil
+        user_notify_days.is_thursday = true
+      else
+        user_notify_days.is_thursday = false
+      end
+
+      if params[:notify_fri] != nil
+        user_notify_days.is_friday = true
+      else
+        user_notify_days.is_friday = false
+      end
+
+      if params[:notify_sat] != nil
+        user_notify_days.is_saturday = true
+      else
+        user_notify_days.is_saturday = false
+      end
     end
     if user_notify_times == nil
       user_notify_times = Notify_Time.create(
@@ -115,7 +184,64 @@ post '/set_user_line_notify' do
         notify_20to22: false,
         notify_22to24: false
       )
+    else
+      if params[:notify_6to8] != nil
+        user_notify_times.notify_6to8 = true
+      else
+        user_notify_times.notify_6to8 = false
+      end
+
+      if params[:notify_8to10] != nil
+        user_notify_times.notify_8to10 = true
+      else
+        user_notify_times.notify_8to10 = false
+      end
+
+      if params[:notify_10to12] != nil
+        user_notify_times.notify_10to12 = true
+      else
+        user_notify_times.notify_10to12 = false
+      end
+
+      if params[:notify_12to14] != nil
+        user_notify_times.notify_12to14 = true
+      else
+        user_notify_times.notify_12to14 = false
+      end
+
+      if params[:notify_14to16] != nil
+        user_notify_times.notify_14to16 = true
+      else
+        user_notify_times.notify_14to16 = false
+      end
+
+      if params[:notify_16to18] != nil
+        user_notify_times.notify_16to18 = true
+      else
+        user_notify_times.notify_16to18 = false
+      end
+
+      if params[:notify_18to20] != nil
+        user_notify_times.notify_18to20 = true
+      else
+        user_notify_times.notify_18to20 = false
+      end
+
+      if params[:notify_20to22] != nil
+        user_notify_times.notify_20to22 = true
+      else
+        user_notify_times.notify_20to22 = false
+      end
+
+      if params[:notify_22to24] != nil
+        user_notify_times.notify_22to24 = true
+      else
+        user_notify_times.notify_22to24 = false
+      end
     end
+    user_notify_days.save
+    user_notify_times.save
+    binding.pry
   end
   redirect to(params[:redirect_to])
 end
