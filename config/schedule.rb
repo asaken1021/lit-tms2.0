@@ -18,3 +18,9 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+set :output, "/home/lit_users/workspace/cron_log.log"
+
+every 1.minute do
+  rake "send_6to8"
+end

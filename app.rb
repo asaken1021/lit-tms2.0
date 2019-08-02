@@ -400,8 +400,8 @@ get '/send_test_notify' do
 end
 
 post '/send_test_notify' do
-  user = User.find_by(id: current_user.id)
-  if user.user_line_id != ""
+  user = User.find(current_user.id)
+  if user != nil
     BotURI = URI(File.open('/home/lit_users/workspace/LINE_BOT_URL').read)
     data = {
       message: "Test Notification",
