@@ -67,8 +67,8 @@ get '/user_settings' do #ユーザー設定ページ
     @error_code = 1
     erb :error
   else
-    @user_days = User_Day.where(user_id: current_user.id)
-    @user_times = User_Time.where(user_id: current_user.id)
+    @user_days = UserDay.where(user_id: current_user.id)
+    @user_times = UserTime.where(user_id: current_user.id)
     # @user_daysや@user_timesがnilの時の処理はerbで
     erb :user_settings
   end
@@ -90,8 +90,8 @@ post '/set_user_line_notify' do #ユーザーのLINE通知の曜日と時間設�
     @error_code = 1
     erb :error
   else
-    user_days = User_Day.where(user_id: current_user.id)
-    user_times = User_Time.where(user_id: current_user.id)
+    user_days = UserDay.where(user_id: current_user.id)
+    user_times = UserTime.where(user_id: current_user.id)
 
     if user_days != nil # そのユーザーがすでに曜日の設定を保存していた場合
       user_days.each do |day|
@@ -106,53 +106,53 @@ post '/set_user_line_notify' do #ユーザーのLINE通知の曜日と時間設�
     end
 
     if params[:notify_sun] != nil
-      User_Day.create(user_id: current_user.id, day_id: 0)
+      UserDay.create(user_id: current_user.id, day_id: 0)
     end
     if params[:notify_mon] != nil
-      User_Day.create(user_id: current_user.id, day_id: 1)
+      UserDay.create(user_id: current_user.id, day_id: 1)
     end
     if params[:notify_tue] != nil
-      User_Day.create(user_id: current_user.id, day_id: 2)
+      UserDay.create(user_id: current_user.id, day_id: 2)
     end
     if params[:notify_wed] != nil
-      User_Day.create(user_id: current_user.id, day_id: 3)
+      UserDay.create(user_id: current_user.id, day_id: 3)
     end
     if params[:notify_thu] != nil
-      User_Day.create(user_id: current_user.id, day_id: 4)
+      UserDay.create(user_id: current_user.id, day_id: 4)
     end
     if params[:notify_fri] != nil
-      User_Day.create(user_id: current_user.id, day_id: 5)
+      UserDay.create(user_id: current_user.id, day_id: 5)
     end
     if params[:notify_sat] != nil
-      User_Day.create(user_id: current_user.id, day_id: 6)
+      UserDay.create(user_id: current_user.id, day_id: 6)
     end
 
     if params[:notify_6to8] != nil
-      User_Time.create(user_id: current_user.id, time_id: 0)
+      UserTime.create(user_id: current_user.id, time_id: 0)
     end
     if params[:notify_8to10] != nil
-      User_Time.create(user_id: current_user.id, time_id: 1)
+      UserTime.create(user_id: current_user.id, time_id: 1)
     end
     if params[:notify_10to12] != nil
-      User_Time.create(user_id: current_user.id, time_id: 2)
+      UserTime.create(user_id: current_user.id, time_id: 2)
     end
     if params[:notify_12to14] != nil
-      User_Time.create(user_id: current_user.id, time_id: 3)
+      UserTime.create(user_id: current_user.id, time_id: 3)
     end
     if params[:notify_14to16] != nil
-      User_Time.create(user_id: current_user.id, time_id: 4)
+      UserTime.create(user_id: current_user.id, time_id: 4)
     end
     if params[:notify_16to18] != nil
-      User_Time.create(user_id: current_user.id, time_id: 5)
+      UserTime.create(user_id: current_user.id, time_id: 5)
     end
     if params[:notify_18to20] != nil
-      User_Time.create(user_id: current_user.id, time_id: 6)
+      UserTime.create(user_id: current_user.id, time_id: 6)
     end
     if params[:notify_20to22] != nil
-      User_Time.create(user_id: current_user.id, time_id: 7)
+      UserTime.create(user_id: current_user.id, time_id: 7)
     end
     if params[:notify_22to24] != nil
-      User_Time.create(user_id: current_user.id, time_id: 8)
+      UserTime.create(user_id: current_user.id, time_id: 8)
     end
     redirect to(params[:redirect_to])
   end

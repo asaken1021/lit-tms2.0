@@ -43,10 +43,10 @@ class Nonce < ActiveRecord::Base
 
 end
 
-class User_Day < ActiveRecord::Base
+class UserDay < ActiveRecord::Base
   belongs_to :users
 end
 
-class User_Time < ActiveRecord::Base
+class UserTime < ActiveRecord::Base
   belongs_to :users
 end
