@@ -7,6 +7,8 @@ end
 
 class User < ActiveRecord::Base
   has_many :projects
+  has_many :user_days
+  has_many :user_times
   has_secure_password
   validates :mail,
     presence: true,
@@ -41,10 +43,10 @@ class Nonce < ActiveRecord::Base
 
 end
 
-class Notify_Day < ActiveRecord::Base
-
+class User_Day < ActiveRecord::Base
+  belongs_to :users
 end
 
-class Notify_Time < ActiveRecord::Base
-
+class User_Time < ActiveRecord::Base
+  belongs_to :users
 end
