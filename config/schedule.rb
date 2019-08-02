@@ -19,8 +19,17 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# 新規構築の際のメモ
+# cronがインストールされていることを確認する
+# されていないなら
+# sudo apt install cron
+# sudo service cron start
+
+env :PATH, ENV['PATH']
+job_type :rbenv_rake, %q!eval "$(rbenv init -)"; cd :path && bundle exec rake test --silent :output!
+
 set :output, "/home/lit_users/workspace/cron_log.log"
 
-every 1.minute do
-  rake "send_6to8"
+every '0 6,8,10,12,14,16,18.20,22 * * *' do
+  rake 'send_notify'
 end

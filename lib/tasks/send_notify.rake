@@ -30,7 +30,7 @@ task :send_notify do
     user.user_days.each do |user_day|
       if user_day.day_id == day
         user.user_times.each do |user_time|
-          if user_time.time_id == time_id
+          if user_time.time_id == timeid
             user_projects = Project.where(user_id: user.id)
             user_projects.each do |user_project|
               user_task = Task.where(project_id: user_project.id).where.not(progress: 100).first
