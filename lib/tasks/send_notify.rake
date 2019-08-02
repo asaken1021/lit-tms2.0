@@ -3,8 +3,6 @@ task :send_notify do
   timeid = nil
   day = Date.today.wday
   users = User.where.not(user_line_id: nil)
-  notify_day = Notify_Day.all
-  notify_time = Notify_Time.all
   p timeHour + 9
   p day
 
