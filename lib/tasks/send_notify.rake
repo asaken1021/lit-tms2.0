@@ -6,23 +6,23 @@ task :send_notify do
   p timeHour + 9
   p day
 
-  if timeHour <= 6 && timeHour > 8
+  if timeHour >= 6 && timeHour < 8
     timeid = 0
-  elsif timeHour <= 8 && timeHour > 10
+  elsif timeHour >= 8 && timeHour < 10
     timeid = 1
-  elsif timeHour <= 10 && timeHour > 12
+  elsif timeHour >= 10 && timeHour < 12
     timeid = 2
-  elsif timeHour <= 12 && timeHour > 14
+  elsif timeHour >= 12 && timeHour < 14
     timeid = 3
-  elsif timeHour <= 14 && timeHour > 16
+  elsif timeHour >= 14 && timeHour < 16
     timeid = 4
-  elsif timeHour <= 16 && timeHour > 18
+  elsif timeHour >= 16 && timeHour < 18
     timeid = 5
-  elsif timeHour <= 18 && timeHour > 20
+  elsif timeHour >= 18 && timeHour < 20
     timeid = 6
-  elsif timeHour <= 20 && timeHour > 22
+  elsif timeHour >= 20 && timeHour < 22
     timeid = 7
-  elsif timeHour <= 22 && timeHour > 0
+  elsif timeHour >= 22 && timeHour < 0
     timeid = 8
   end
 
