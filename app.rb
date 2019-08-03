@@ -306,30 +306,6 @@ def check_user_project(project_id = nil)
   return -1
 end
 
-##### LINE Bot との連携 #####
-get '/send_test_notify' do
-  erb :line_bot_test
-end
-
-post '/send_test_notify' do
-  user = User.find(current_user.id)
-  if user != nil
-    BotURI = URI(File.open('/home/lit_users/workspace/LINE_BOT_URL').read)
-    data = {
-      message: "Test Notification",
-      to: user.user_line_id
-    }.to_json
-    https = Net::HTTP.new(BotURI.host, BotURI.port)
-    https.use_ssl = true
-    req = Net::HTTP::Post.new(BotURI)
-    req.body = data
-    req['Content-Type'] = "application/json"
-    req['Accept'] = "application/json"
-    res = https.request(req)
-    redirect '/send_test_notify'
-  end
-end
-
 ##### LINE アカウント連携 #####
 get '/line_link' do
   @linkToken = params[:linkToken]
