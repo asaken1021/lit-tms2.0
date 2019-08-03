@@ -3,7 +3,7 @@ task :send_notify do
   timeid = nil
   day = Date.today.wday
   users = User.where.not(user_line_id: nil)
-  p timeHour + 9
+  p timeHour
   p day
 
   if timeHour >= 6 && timeHour < 8
