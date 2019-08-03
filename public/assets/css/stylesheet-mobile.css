@@ -1,7 +1,7 @@
-.tms-project-title {
-  padding-top: 8px;
+.tms-project-progress-content {
+  display: none;
 }
 
-.tms-project-progress-text {
-  display: none;
+.tms-project-title {
+  text-align: center;
 }
