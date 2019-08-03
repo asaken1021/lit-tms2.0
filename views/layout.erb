@@ -42,6 +42,8 @@
 						<% else %>
 							<li class="nav-item">
 								<span class="navbar-text text-body pre-wrap">ようこそ、<a href="/user_settings"><%= User.find(session[:user]).name %></a> さん  </span>
+							</li>
+							<li class="nav-item">
 								<a class="btn btn-primary mr-1" href="/user_settings">ユーザー設定</a>
 								<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-out-modal">サインアウト</button>
 							</li>
