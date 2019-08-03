@@ -9,3 +9,8 @@
 .mobile-hide {
   display: none;
 }
+
+.range-modal {
+  max-width: 90%;
+  margin: auto;
+}
