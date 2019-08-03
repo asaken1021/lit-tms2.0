@@ -5,3 +5,7 @@
 .tms-project-title {
   text-align: center;
 }
+
+.mobile-hide {
+  display: none;
+}

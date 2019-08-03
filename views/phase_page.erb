@@ -57,7 +57,7 @@
     <thead class="thead-light">
       <tr>
         <th scope="col">タスク名 (<%= @completed_tasks_count %>/<%= @tasks_count %>)</th>
-        <th scope="col">メモ</th>
+        <th scope="col" class="mobile-hide">メモ</th>
         <th scope="col">進捗</th>
         <th scope="col"></th>
       </tr>
@@ -66,7 +66,7 @@
       <% @tasks.each do |task| %>
         <tr>
           <td class="align-middle"><%= task.name %></td>
-          <td class="align-middle"><%= task.memo %></td>
+          <td class="align-middle mobile-hide"><%= task.memo %></td>
           <td class="align-middle">
             <% if @status == 0 %>
               <button class="btn btn-link" type="button" data-toggle="modal" data-target="#edit-task-<%= task.id %>-progress-modal">
