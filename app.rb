@@ -62,6 +62,17 @@ post '/sign_out' do #ユーザーサインアウト
   redirect to(params[:redirect_to])
 end
 
+get '/users/:id' do #ユーザーページ
+  @user = User.find_by(id: params[:id])
+  @user_projects = Project.where(user_id: params[:id])
+  if @user == nil
+    @error_code = 3
+    erb :error
+  else
+    erb :user_page
+  end
+end
+
 get '/user_settings' do #ユーザー設定ページ
   if current_user == nil
     @error_code = 1
@@ -155,6 +166,79 @@ post '/set_user_line_notify' do #ユーザーのLINE通知の曜日と時間設�
       UserTime.create(user_id: current_user.id, time_id: 8)
     end
     redirect to(params[:redirect_to])
+  end
+end
+
+post '/set_user_groups' do #ユーザーの所属グループの設定
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    group_names = params[:group_names]
+    group_names = group_names.split(" ")
+    group_names.each do |group_name|
+      group = Group.find_by(name: group_name)
+      if group != nil
+        UsersGroup.create(
+          user_id: current_user.id,
+          group_id: group.id
+        )
+     else
+      #何もしない
+     end
+  end
+  redirect to(params[:redirect_to])
+  end
+end
+
+get '/create_group' do #グループ作成ページ
+  erb :create_group
+end
+
+post '/create_group' do #グループ作成
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    group = Group.create(
+      name: params[:name],
+      description: params[:description]
+    )
+    # redirect to('/groups/' + group.id.to_s)
+    redirect '/user_settings'
+  end
+end
+
+get '/groups' do #グループ一覧（所属しているもののみ）
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    @groups = UsersGroup.where(user_id: current_user.id)
+    erb :groups
+  end
+end
+
+get '/groups/:id' do #グループページ
+  if current_user == nil
+    @error_code = 1
+    erb :error
+  else
+    @group = Group.find_by(id: params[:id])
+    @group_users = UsersGroup.where(group_id: params[:id])
+    is_valid_user = false
+    @group_users.each do |group_user|
+      if group_user.user_id == current_user.id
+        is_valid_user = true
+        break
+      end
+    end
+    if (is_valid_user)
+      erb :group_page
+    else
+      @error_code = 3
+      erb :error
+    end
   end
 end
 

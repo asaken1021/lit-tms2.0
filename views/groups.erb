@@ -1,14 +1,15 @@
 <div class="container">
   <div class="card text-center">
     <div class="card-header">
-      プロジェクト一覧
+      所属グループ一覧
     </div>
   </div>
-  <% if @projects.count != 0 %>
-    <% @projects.each do |project| %>
+  <% if @groups.count != 0 %>
+    <% @groups.each do |g| %>
+      <% group = Group.find_by(id: g.group_id) %>
       <div class="card text-center">
         <div class="card-body">
-          <a href="/projects/<%= project.id %>"><h4 class="card-title"><%= project.name %></h4></a>
+          <a href="/groups/<%= group.id %>"><h4 class="card-title"><%= group.name %></h4></a>
         </div>
       </div>
     <% end %>
@@ -18,7 +19,7 @@
         <% unless session[:user] %>
           <h4 class="card-title">一覧を表示するには、サインインしてください</h4>
         <% else %>
-          <h4 class="card-title">作成されているプロジェクトはありません</h4>
+          <h4 class="card-title">所属しているグループはありません</h4>
         <% end %>
       </div>
     </div>

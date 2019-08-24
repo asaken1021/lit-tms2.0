@@ -50,3 +50,12 @@ end
 class UserTime < ActiveRecord::Base
   belongs_to :users
 end
+
+class Group < ActiveRecord::Base
+
+end
+
+class UsersGroup < ActiveRecord::Base
+  has_many :users
+  has_many :groups
+end

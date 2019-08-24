@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <h2 class="tms-project-title col"><%= @group.name %></h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">概要</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @group.description %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">所属するユーザー一覧</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @group_users.each do |group_user| %>
+        <tr>
+          <td><a href="/users/<%= group_user.user_id %>"><%= User.find_by(id: group_user.user_id).name %></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

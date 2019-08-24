@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      グループ設定
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">グループの作成</h4>
+      <p class="card-text">ユーザー同士でお互いの進捗を確認するには、グループを作成し参加する必要があります。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-group-modal">作成</button>
+    </div>
+  </div>
+
+  <form action="/create_group" method="post">
+    	<div class="modal fade" id="create-group-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        	<div class="modal-content">
+          	<div class="modal-header">
+            	<h5 class="modal-title" id="label1">グループ作成</h5>
+            	<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+  	            <span aria-hidden="true">&times;</span>
+	            </button>
+          	</div>
+          	<div class="modal-body">
+            	<div class="row">
+              	<div class="col">
+	                <input class="form-control" type="text" name="name" placeholder="グループ名">
+									<input class="form-control" type="text" name="description" placeholder="グループの概要">
+              	</div>
+            	</div>
+          	</div>
+          	<div class="modal-footer">
+            	<button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+          	  <input class="form-control btn btn-primary" type="submit" value="作成">
+          	</div>
+        	</div>
+      	</div>
+    	</div>
+  	</form>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <h2 class="tms-project-title col"><%= @user.name %></h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">このユーザーのプロジェクト</th>
+        <th scope="col">進捗度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_projects.each do |user_project| %>
+        <tr>
+          <td><a href="/projects/<%= user_project.id %>"><%= user_project.name %></a></td>
+          <td><%= user_project.progress %>%</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
