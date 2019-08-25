@@ -1,8 +1,22 @@
 <div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      メインメニュー
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <h2 class="tms-project-title col">TMS 2.0</h2>
+      </div>
     </div>
+  </div>
+  <br>
+  <% if current_user == nil %>
+    <div class="card text-center">
+      <div class="card-body">
+        <h4 class="card-title">使い方</h4>
+        <p class="card-text">初めてTMS 2.0を使う方はこちら</p>
+        <a class="btn btn-primary" href="/help">使い方</a>
+      </div>
+    </div>
+  <% end %>
+  <div class="card text-center">
     <div class="card-body">
       <h4 class="card-title">新規プロジェクト作成</h4>
       <p class="card-text">新しくプロジェクトを作成します。</p>

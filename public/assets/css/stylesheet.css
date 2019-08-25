@@ -54,3 +54,39 @@
 .range-modal {
   text-align: center
 }
+
+.navbar {
+  background-color: #87cefa;
+}
+
+.footer {
+  margin-top: 20px !important;
+  background-color: #184a69;
+}
+
+.main-content {
+  margin-bottom: auto;
+}
+
+.footer-text {
+  color: white;
+  /* border-bottom: solid white 1px; */
+  display: flex;
+}
+
+.footer-text-title {
+  width: 50%;
+  margin-bottom: 0px;
+}
+
+/* .footer-text-copyright {
+  width: 50%;
+  margin-bottom: 0px;
+  text-align: right;
+  vertical-align: text-bottom;
+  font-size: 10px;
+} */
+
+body {
+  padding-top: 56px;
+}

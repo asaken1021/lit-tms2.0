@@ -1,12 +1,23 @@
 <div class="container">
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <% if @error_code == 1 %>
+          <h2 class="tms-project-title col text-danger">エラー：セッション情報がありません</h2>
+        <% elsif @error_code == 2 %>
+          <h2 class="tms-project-title col text-danger">エラー：アカウントが違います</h2>
+        <% elsif @error_code == 3 %>
+          <h2 class="tms-project-title col text-danger">エラー：見つかりませんでした</h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
   <% if @error_code == 1 %>
-    <h2 class="tms-project-title text-danger">エラー：セッション情報がありません</h2>
     <p class="error-reason-text">セッション情報がないため、処理できませんでした。サインインしてください。</p>
   <% elsif @error_code == 2 %>
-    <h2 class="tms-project-title text-danger">エラー：アカウントが違います</h2>
     <p class="error-reason-text">あなたはプロジェクトの作成者ではないため、編集できません。</p>
   <% elsif @error_code == 3 %>
-    <h2 class="tms-project-title text-danger">エラー：見つかりませんでした</h2>
     <p class="error-reason-text">リクエストされたURLは無効です。</p>
   <% end %>
 </div>

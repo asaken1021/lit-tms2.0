@@ -1,9 +1,12 @@
 <div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      所属グループ一覧
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <h2 class="tms-project-title col">所属グループ一覧</h2>
+      </div>
     </div>
   </div>
+  <br>
   <% if @groups.count != 0 %>
     <% @groups.each do |g| %>
       <% group = Group.find_by(id: g.group_id) %>

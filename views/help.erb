@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <h2 class="tms-project-title col">使い方</h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">1. アカウント登録</h4>
+      <p class="card-text">このサービスを利用するには、アカウントが必要です。メールアドレスとパスワードで登録できます。</p>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#sign-up-modal">新規登録</button>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">2. LINEアカウントと連携</h4>
+      <p class="card-text">アカウントを作成したら、プッシュ通知を受け取るためにLINEアカウントと連携しましょう。</p>
+      <a class="btn btn-primary" href="/line_bot" target="_blank">連携する</a>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">3. LINEプッシュ通知のタイミングを設定</h4>
+      <p class="card-text">プッシュ通知を受け取るために、通知を送信する曜日と時間帯を設定しましょう。</p>
+      <a class="btn btn-primary" href="/user_settings" target="_blank">設定する</a>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">4. プロジェクトを作成</h4>
+      <p class="card-text">通知の設定を終えたら、自分のプロジェクトを作成します。</p>
+      <a class="btn btn-primary" href="/" target="_blank">作成する</a>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">5. フェーズを作成</h4>
+      <p class="card-text">フェーズを作成することで、タスクを分けて期限を設定することができます。</p>
+      <a class="btn btn-primary" href="/projects" target="_blank">作成する</a>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h4 class="card-title">6. タスクを作成し、開発に取り組む</h4>
+      <p class="card-text">フェーズにタスクを追加していき、開発に取り組みましょう！</p>
+      <a class="btn btn-primary" href="/projects" target="_blank">作成する</a>
+    </div>
+  </div>
+
+  <form action="/create_project" method="post">
+    <div class="modal fade" id="create-project-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="label1">新規プロジェクト作成</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <input class="form-control" type="text" name="project_name" placeholder="プロジェクト名">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="form-control btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+            <input class="form-control btn btn-primary" type="submit" value="作成">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

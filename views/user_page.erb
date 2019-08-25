@@ -46,6 +46,8 @@
           <td><%= timestamp_date %> <%= timestamp_time %></td>
           <% if user_activity.activity == "update_task_progress" %>
             <td>プロジェクト「<a href="/projects/<%= project.id %>"><%= project.name %></a>」のフェーズ「<a href="/projects/<%= project.id %>/<%= phase.id %>"><%= phase.name %></a>」のタスク「<%= task.name %>」の進捗度を更新しました</td>
+          <% elsif user_activity.activity == "complete_task" %>
+            <td>プロジェクト「<a href="/projects/<%= project.id %>"><%= project.name %></a>」のフェーズ「<a href="/projects/<%= project.id %>/<%= phase.id %>"><%= phase.name %></a>」のタスク「<%= task.name %>」を完了しました</td>
           <% end %>
         </tr>
       <% end %>

@@ -35,6 +35,10 @@ get '/' do
   erb :index
 end
 
+get '/help' do
+  erb :help
+end
+
 post '/sign_up' do #ユーザー作成
   @user = User.create(
     mail: params[:mail],
@@ -84,6 +88,10 @@ get '/user_settings' do #ユーザー設定ページ
     # @user_daysや@user_timesがnilの時の処理はerbで
     erb :user_settings
   end
+end
+
+get '/line_bot' do
+  erb :line_bot
 end
 
 post '/set_user_line_id' do #ユーザーのLINEユーザーIDの設定
@@ -362,7 +370,11 @@ post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進�
     task.progress = params[:progress]
     task.save
     update_project_progress(params[:id])
-    post_user_activity("update_task_progress", params[:id], params[:phase_id], params[:task_id])
+    if (params[:progress] == 100.to_s)
+      post_user_activity("complete_task", params[:id], params[:phase_id], params[:task_id])
+    else
+      post_user_activity("update_task_progress", params[:id], params[:phase_id], params[:task_id])
+    end
     redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
   else
     erb :error

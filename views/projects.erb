@@ -1,9 +1,12 @@
 <div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      プロジェクト一覧
+  <div class="project-description">
+    <div class="container">
+      <div class="row">
+        <h2 class="tms-project-title col">プロジェクト一覧</h2>
+      </div>
     </div>
   </div>
+  <br>
   <% if @projects.count != 0 %>
     <% @projects.each do |project| %>
       <div class="card text-center">
