@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :user_days
   has_many :user_times
+  has_many :user_activities
   has_secure_password
   validates :mail,
     presence: true,
@@ -58,4 +59,8 @@ end
 class UsersGroup < ActiveRecord::Base
   has_many :users
   has_many :groups
+end
+
+class UserActivity < ActiveRecord::Base
+
 end

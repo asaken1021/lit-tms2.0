@@ -26,9 +26,35 @@
       </tr>
     </thead>
     <tbody>
-      <% @group_users.each do |group_user| %>
+      <% @group_users_id.each do |group_user_id| %>
         <tr>
-          <td><a href="/users/<%= group_user.user_id %>"><%= User.find_by(id: group_user.user_id).name %></a></td>
+          <td><a href="/users/<%= group_user_id %>"><%= User.find(group_user_id).name %></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">日時</th>
+        <th scope="col">ユーザー名</th>
+        <th scope="col">アクティビティ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @group_activities.each do |group_activity| %>
+        <tr>
+          <% timestamp = group_activity.created_at.in_time_zone("Tokyo") %>
+          <% timestamp_date = timestamp.to_s.slice(0, 10).gsub("-", "/") %>
+          <% timestamp_time = timestamp.to_s.slice(11, 8) %>
+          <% project = Project.find(group_activity.project_id) %>
+          <% phase = Phase.find(group_activity.phase_id) %>
+          <% task = Task.find(group_activity.task_id) %>
+          <td><%= timestamp_date %> <%= timestamp_time %></td>
+          <td><a href="/users/<%= group_activity.user_id %>"><%= User.find(group_activity.user_id).name %></a></td>
+          <% if group_activity.activity == "update_task_progress" %>
+            <td>プロジェクト「<a href="/projects/<%= project.id %>"><%= project.name %></a>」のフェーズ「<a href="/projects/<%= project.id %>/<%= phase.id %>"><%= phase.name %></a>」のタスク「<%= task.name %>」の進捗度を更新しました</td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

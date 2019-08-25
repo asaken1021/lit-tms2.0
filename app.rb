@@ -65,6 +65,7 @@ end
 get '/users/:id' do #ユーザーページ
   @user = User.find_by(id: params[:id])
   @user_projects = Project.where(user_id: params[:id])
+  @user_activities = UserActivity.where(user_id: params[:id]).order(:created_at).reverse_order
   if @user == nil
     @error_code = 3
     erb :error
@@ -226,6 +227,11 @@ get '/groups/:id' do #グループページ
   else
     @group = Group.find_by(id: params[:id])
     @group_users = UsersGroup.where(group_id: params[:id])
+    @group_users_id = []
+    @group_users.each do |group_user|
+      @group_users_id.push(group_user.user_id)
+    end
+    @group_activities = UserActivity.where(user_id: @group_users_id).order(:created_at).reverse_order
     is_valid_user = false
     @group_users.each do |group_user|
       if group_user.user_id == current_user.id
@@ -356,6 +362,7 @@ post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進�
     task.progress = params[:progress]
     task.save
     update_project_progress(params[:id])
+    post_user_activity("update_task_progress", params[:id], params[:phase_id], params[:task_id])
     redirect to('/projects/' + project.id.to_s + '/' + phase.id.to_s)
   else
     erb :error
@@ -388,6 +395,17 @@ def check_user_project(project_id = nil)
     return 1
   end
   return -1
+end
+
+ def post_user_activity(activity_type = nil, project_id = nil, phase_id = nil, task_id = nil)
+  # activity_type は update_task_progress, complete_task, complete_phase, complete_project の必要がある
+  UserActivity.create(
+    user_id: current_user.id,
+    project_id: project_id,
+    phase_id: phase_id,
+    task_id: task_id,
+    activity: activity_type
+  )
 end
 
 ##### LINE アカウント連携 #####

@@ -18,7 +18,35 @@
       <% @user_projects.each do |user_project| %>
         <tr>
           <td><a href="/projects/<%= user_project.id %>"><%= user_project.name %></a></td>
-          <td><%= user_project.progress %>%</td>
+          <% if user_project.progress == 100 %>
+            <td><%= user_project.progress.to_s.slice(0, 5) %>%</td>
+          <% else %>
+            <td><%= user_project.progress.to_s.slice(0, 4) %>%</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">日時</th>
+        <th scope="col">このユーザーのアクティビティ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_activities.each do |user_activity| %>
+        <tr>
+          <% timestamp = user_activity.created_at.in_time_zone("Tokyo") %>
+          <% timestamp_date = timestamp.to_s.slice(0, 10).gsub("-", "/") %>
+          <% timestamp_time = timestamp.to_s.slice(11, 8) %>
+          <% project = Project.find(user_activity.project_id) %>
+          <% phase = Phase.find(user_activity.phase_id) %>
+          <% task = Task.find(user_activity.task_id) %>
+          <td><%= timestamp_date %> <%= timestamp_time %></td>
+          <% if user_activity.activity == "update_task_progress" %>
+            <td>プロジェクト「<a href="/projects/<%= project.id %>"><%= project.name %></a>」のフェーズ「<a href="/projects/<%= project.id %>/<%= phase.id %>"><%= phase.name %></a>」のタスク「<%= task.name %>」の進捗度を更新しました</td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
