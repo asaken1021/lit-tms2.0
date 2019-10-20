@@ -14,11 +14,11 @@ require 'net/http'
 require 'json'
 require 'securerandom'
 
-if Socket.gethostname == 'sinatra-tms2.0.local'
+if Socket.gethostname == 'tms2.0.local'
   ssl_options = {
     SSLEnable: true,
-    SSLCertificate: OpenSSL::X509::Certificate.new(File.open('/var/SSLCert/cert.pem').read),
-    SSLPrivateKey: OpenSSL::PKey::RSA.new(File.open('/var/SSLCert/privkey.pem').read)
+    SSLCertificate: OpenSSL::X509::Certificate.new(File.open('/home/lit_users/workspace/cert.pem').read),
+    SSLPrivateKey: OpenSSL::PKey::RSA.new(File.open('/home/lit_users/workspace/privkey.pem').read)
   }
   set :server_settings, ssl_options
 end
