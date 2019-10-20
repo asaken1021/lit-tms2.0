@@ -26,3 +26,4 @@ end
 gem 'pry'
 
 gem 'whenever'
+gem 'tzinfo-data'
