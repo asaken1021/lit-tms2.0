@@ -73,6 +73,8 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2019.3)
+      tzinfo (>= 1.0.0)
     unicode-display_width (1.6.0)
     whenever (1.0.0)
       chronic (>= 0.6.3)
@@ -95,6 +97,7 @@ DEPENDENCIES
   sinatra-activerecord
   sinatra-contrib
   sqlite3 (= 1.4.1)
+  tzinfo-data
   whenever
 
 RUBY VERSION
