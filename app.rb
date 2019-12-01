@@ -398,7 +398,7 @@ end
 
 def check_user_project(project_id = nil)
   if current_user != nil
-    if current_user.id == project_id
+    if current_user.id == Project.find(project_id).user_id
       return 0
     else
       return 2
