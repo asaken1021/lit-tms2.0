@@ -322,6 +322,10 @@ post '/projects/:id/remove_project' do #プロジェクトの削除
   project = Project.find(params[:id])
   @error_code = check_user_project(project.id)
   if @error_code == 0
+    activities = UserActivity.where(project_id: params[:id])
+    activities.each do |activity|
+      activity.destroy
+    end
     tasks = Task.where(project_id: params[:id])
     tasks.each do |task|
       task.destroy
