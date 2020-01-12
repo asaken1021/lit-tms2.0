@@ -28,6 +28,11 @@
   bottom: 0;
 }
 
+.tms-project-visibility-radio {
+  width: max-content;
+  margin: auto;
+}
+
 .pre-wrap {
   white-space: pre-wrap;
 }

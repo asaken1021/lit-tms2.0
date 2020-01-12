@@ -63,7 +63,8 @@ end
 
 post '/sign_out' do #ユーザーサインアウト
   session[:user] = nil
-  redirect to(params[:redirect_to])
+  # redirect to(params[:redirect_to])
+  redirect '/'
 end
 
 get '/users/:id' do #ユーザーページ
@@ -286,7 +287,54 @@ get '/projects/:id' do #プロジェクトページ
   all_tasks = Task.where(project_id: @project.id)
   update_project_progress(params[:id])
   @status = check_user_project(@project.id)
-  erb :project_page
+  visibility = check_project_visibility(@project.id)
+  if visibility == 0
+    erb :project_page
+  else
+    @error_code = 3
+    erb :error
+  end
+end
+
+get '/projects/:id/settings' do #プロジェクトの設定ページ
+  @project = Project.find(params[:id])
+  @error_code = check_user_project(@project.id)
+  if @error_code == 0
+    erb :project_settings
+  else
+    erb :error
+  end
+end
+
+post '/projects/:id/set_visibility' do #プロジェクトの公開状態を設定
+  project = Project.find(params[:id])
+  @error_code = check_user_project(project.id)
+  if @error_code == 0
+    project.visibility = params[:project_visibility]
+    project.save
+    redirect to(params[:redirect_to])
+  else
+    erb :error
+  end
+end
+
+post '/projects/:id/remove_project' do #プロジェクトの削除
+  project = Project.find(params[:id])
+  @error_code = check_user_project(project.id)
+  if @error_code == 0
+    tasks = Task.where(project_id: params[:id])
+    tasks.each do |task|
+      task.destroy
+    end
+    phases = Phase.where(project_id: params[:id])
+    phases.each do |phase|
+      phase.destroy
+    end
+    project.destroy
+    redirect '/projects'
+  else
+    erb :error
+  end
 end
 
 post '/projects/:id/create_phase' do #フェーズ作成
@@ -418,6 +466,25 @@ end
     task_id: task_id,
     activity: activity_type
   )
+end
+
+def check_project_visibility(project_id = nil)
+  project = Project.find(project_id)
+  if project.visibility == "public"
+    return 0
+  elsif project.visibility == "private"
+    if current_user != nil
+      if current_user.id == project.user_id
+        return 0
+      else
+        return 1
+      end
+    else
+      return 1
+    end
+  else
+    return -1
+  end
 end
 
 ##### LINE アカウント連携 #####
