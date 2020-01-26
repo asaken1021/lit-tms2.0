@@ -377,7 +377,13 @@ get '/projects/:id/:phase_id' do #フェーズページ
   end
   update_project_progress(params[:id])
   @status = check_user_project(@project.id)
-  erb :phase_page
+  visibility = check_project_visibility(@project.id)
+  if visibility == 0
+    erb :phase_page
+  else
+    @error_code = 3
+    erb :error
+  end
 end
 
 post '/projects/:id/:phase_id/create_task' do #タスク作成
