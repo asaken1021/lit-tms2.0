@@ -52,6 +52,7 @@
   </table>
   <% if @status == 0 %>
     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-phase-modal">新規フェーズ作成</button>
+    <a href="/projects/<%= @project.id %>/settings" class="btn btn-primary tms-project-settings-button">プロジェクト設定</a>
   <% end %>
 
   <form action="/projects/<%= @project.id %>/create_phase" method="post">

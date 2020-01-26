@@ -76,7 +76,7 @@
 			</div>
 		</footer>
 
-		<form action="/sign_up" method="post">
+	<form action="/sign_up" method="post">
     	<div class="modal fade" id="sign-up-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
       	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         	<div class="modal-content">
@@ -106,7 +106,7 @@
     	</div>
   	</form>
 
-		<form action="/sign_in" method="post">
+	<form action="/sign_in" method="post">
     	<div class="modal fade" id="sign-in-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
       	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         	<div class="modal-content">
@@ -120,8 +120,8 @@
             	<div class="row">
               	<div class="col">
 	                <input class="form-control" type="text" name="mail" placeholder="メールアドレス">
-									<input class="form-control" type="password" name="password" placeholder="パスワード">
-									<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
+					<input class="form-control" type="password" name="password" placeholder="パスワード">
+					<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">
               	</div>
             	</div>
           	</div>
@@ -134,7 +134,7 @@
     	</div>
   	</form>
 
-		<form action="/sign_out" method="post">
+	<form action="/sign_out" method="post">
     	<div class="modal fade" id="sign-out-modal" role="dialog" tabindex="-1" aria-labelledby="label" aria-hidden="true">
       	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         	<div class="modal-content">
@@ -148,7 +148,7 @@
             	<div class="row">
               	<div class="col">
 	                <p>本当にサインアウトしますか？</p>
-									<!--<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">-->
+					<!--<input class="invisible-form" name="redirect_to" value="<%= request.fullpath %>">-->
               	</div>
             	</div>
           	</div>

@@ -56,7 +56,7 @@
   <table class="table table-bordered">
     <thead class="thead-light">
       <tr>
-        <th scope="col">タスク名 (<%= @completed_tasks_count %>/<%= @tasks_count %>)</th>
+        <th scope="col">タスク名 (完了: <%= @completed_tasks_count %> / 総数: <%= @tasks_count %>)</th>
         <th scope="col" class="mobile-hide">メモ</th>
         <th scope="col">進捗</th>
         <th scope="col"></th>
@@ -133,6 +133,7 @@
 
   <% if @status == 0 %>
     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-task-modal">新規タスク作成</button>
+    <a href="/projects/<%= @project.id %>/settings" class="btn btn-primary tms-project-settings-button">プロジェクト設定</a>
   <% end %>
 
   <form action="/projects/<%= @project.id %>/create_phase" method="post">

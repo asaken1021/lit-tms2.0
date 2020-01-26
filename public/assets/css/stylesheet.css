@@ -95,3 +95,12 @@
 body {
   padding-top: 56px;
 }
+
+.tms-project-settings-button {
+  float: right;
+}
+
+.tms-project-settings-back-button {
+  float: right;
+  margin-top: 12px;
+}
