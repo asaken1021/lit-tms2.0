@@ -47,7 +47,7 @@ end
 task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 'task_name', 'line_id', 'project_progress'] do |task, args|
   if args.line_id != nil #LINEIDがnilでないなら
     BotURI = URI('https://tms-line-bot.herokuapp.com/send_notify')
-    ProgressImageURI = URI('https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id + '_' + args.project_id + '.jpg')
+    ProgressImageURI = URI('https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id.to_s + '_' + args.project_id.to_s + '.jpg')
     x_size = 500
     y_size = 100
     image = Magick::Image.new(x_size, y_size)
@@ -55,9 +55,9 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     x_draw_size = x_size / 100 * args.project_progress
     idraw.polygon(0, 0, 0, y_size, x_draw_size, y_size, x_draw_size, 0)
     idraw.draw(image)
-    image.write("public/progress_images/" + args.user_id + "_" + args.project_id + ".jpg")
+    image.write("public/progress_images/" + args.user_id.to_s + "_" + args.project_id.to_s + ".jpg")
     data = {
-      message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。¥n' + ProgressImageURI,
+      message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。¥n' + ProgressImageURI.to_s,
       to: args.line_id
     }.to_json
     https = Net::HTTP.new(BotURI.host, BotURI.port)
