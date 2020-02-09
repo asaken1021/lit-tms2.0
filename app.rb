@@ -14,6 +14,8 @@ require 'net/http'
 require 'json'
 require 'securerandom'
 
+require 'rmagick'
+
 if Socket.gethostname == 'tms2.0.local'
   ssl_options = {
     SSLEnable: true,
@@ -437,6 +439,22 @@ post '/projects/:id/:phase_id/edit_progress_task/:task_id' do #タスクの進�
   else
     erb :error
   end
+end
+
+get '/draw_test' do
+  x_size = 500
+  y_size = 100
+  image = Magick::Image.new(x_size, y_size)
+  idraw = Magick::Draw.new
+  if params[:percent] == nil
+    x_draw_size = 250
+  else
+    x_draw_size = x_size / 100 * params[:percent].to_i
+  end
+  idraw.polygon(0, 0, 0, y_size, x_draw_size, y_size, x_draw_size, 0)
+  idraw.draw(image)
+  image.write("public/test.jpg")
+  erb :draw_test
 end
 
 def update_project_progress(id = nil)
