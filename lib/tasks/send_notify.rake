@@ -48,9 +48,9 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
   if args.line_id != nil #LINEIDがnilでないなら
     Dotenv.load
     Cloudinary.config do |config|
-      config.cloud_name = File.open('/home/lit_users/workspace/CLOUD_NAME').read
-      config.api_key = File.open('/home/lit_users/workspace/CLOUDINARY_API_KEY').read
-      config.api_secret = File.open('/home/lit_users/workspace/CLOUDINARY_API_SECRET').read
+      config.cloud_name = File.open('/home/lit_users/workspace/CLOUD_NAME').readline(chomp: true)
+      config.api_key = File.open('/home/lit_users/workspace/CLOUDINARY_API_KEY').readline(chomp: true)
+      config.api_secret = File.open('/home/lit_users/workspace/CLOUDINARY_API_SECRET').readline(chomp: true)
     end
 
     BotURI = URI('https://tms-line-bot.herokuapp.com/send_notify')
@@ -68,7 +68,7 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     image.write(local_image_path)
 
     img_upload = Cloudinary::Uploader.upload(local_image_path)
-    cloudinary_img_url = img_upload['url']
+    cloudinary_img_url = img_upload['url'].to_s.gsub('http', 'https')
     p cloudinary_img_url
 
     data = {
