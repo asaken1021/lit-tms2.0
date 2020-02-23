@@ -48,6 +48,9 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
   if args.line_id != nil #LINEIDがnilでないなら
     BotURI = URI('https://tms-line-bot.herokuapp.com/send_notify')
     BotImageURI = URI('https://tms-line-bot.herokuapp.com/send_notify_progress_image')
+    local_image_path = "public/progress_images/" + args.user_id.to_s + "_" + args.project_id.to_s + ".jpg"
+    # server_image_path = 'https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id.to_s + '_' + args.project_id.to_s + '.jpg'
+
     x_size = 500
     y_size = 100
     image = Magick::Image.new(x_size, y_size)
@@ -55,23 +58,30 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     x_draw_size = x_size / 100 * args.project_progress
     idraw.polygon(0, 0, 0, y_size, x_draw_size, y_size, x_draw_size, 0)
     idraw.draw(image)
-    image.write("public/progress_images/" + args.user_id.to_s + "_" + args.project_id.to_s + ".jpg")
+    image.write(local_image_path)
+
+    img_upload = Cloudinary::Uploader.upload(local_image_path)
+    cloudinary_img_url = img_upload['url']
+    p cloudinary_img_url
+
     data = {
       message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。',
       to: args.line_id
     }.to_json
+
     data_image = {
       originalUrl: 'https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id.to_s + '_' + args.project_id.to_s + '.jpg',
-      previewUrl: 'https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id.to_s + '_' + args.project_id.to_s + '.jpg',
+      previewUrl: cloudinary_img_url,
       to: args.line_id
     }.to_json
+
     https = Net::HTTP.new(BotURI.host, BotURI.port)
     https.use_ssl = true
     req = Net::HTTP::Post.new(BotURI)
     req.body = data
     req['Content-Type'] = "application/json"
     req['Accept'] = "application/json"
-    res = https.request(req) #POSTリクエストを送信
+    res = https.request(req)
 
     https = Net::HTTP.new(BotImageURI.host, BotImageURI.port)
     https.use_ssl = true

@@ -29,3 +29,6 @@ gem 'whenever'
 gem 'tzinfo-data'
 
 gem 'rmagick'
+
+gem 'cloudinary'
+gem 'dotenv'
