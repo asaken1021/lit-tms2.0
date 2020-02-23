@@ -3,3 +3,6 @@
 development.db
 LINE_BOT_URL
 public/test.jpg
+CLOUD_NAME
+CLOUDINARY_API_KEY
+CLOUDINARY_API_SECRET
