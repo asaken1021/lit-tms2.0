@@ -46,6 +46,13 @@ end
 
 task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 'task_name', 'line_id', 'project_progress'] do |task, args|
   if args.line_id != nil #LINEIDがnilでないなら
+    Dotenv.load
+    Cloudinary.config do |config|
+      config.cloud_name = ENV['CLOUD_NAME']
+      config.api_key = ENV['CLOUDINARY_API_KEY']
+      config.api_secret = ENV['CLOUDINARY_API_SECRET']
+    end
+
     BotURI = URI('https://tms-line-bot.herokuapp.com/send_notify')
     BotImageURI = URI('https://tms-line-bot.herokuapp.com/send_notify_progress_image')
     local_image_path = "public/progress_images/" + args.user_id.to_s + "_" + args.project_id.to_s + ".jpg"
