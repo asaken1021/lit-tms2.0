@@ -77,7 +77,7 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     }.to_json
 
     data_image = {
-      originalUrl: 'https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id.to_s + '_' + args.project_id.to_s + '.jpg',
+      originalUrl: cloudinary_img_url,
       previewUrl: cloudinary_img_url,
       to: args.line_id
     }.to_json
