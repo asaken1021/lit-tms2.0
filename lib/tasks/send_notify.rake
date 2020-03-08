@@ -68,7 +68,7 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     idraw.text(0, 13, 'Progress: ' + args.project_progress.to_i.to_s + '%')
 
     idraw.fill('lightgreen')
-    idraw.stroke('black')
+    idraw.stroke('gray')
     idraw.stroke_width(1)
     idraw.polygon(0, 20, 0, 120, x_draw_size, 120, x_draw_size, 20)
 
