@@ -73,7 +73,7 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     p cloudinary_img_url
 
     data = {
-      message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。 https://cnh-1.asaken1021.net:8080/projects/' + args.project_id,
+      message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。 https://cnh-1.asaken1021.net:8080/projects/' + args.project_id.to_s,
       to: args.line_id
     }.to_json
 
