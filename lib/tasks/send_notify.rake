@@ -58,12 +58,13 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     local_image_path = "public/progress_images/" + args.user_id.to_s + "_" + args.project_id.to_s + ".jpg"
     # server_image_path = 'https://cnh-1.asaken1021.net:8080/progress_images/' + args.user_id.to_s + '_' + args.project_id.to_s + '.jpg'
 
-    x_size = 500
-    y_size = 100
+    x_size = 600
+    y_size = 120
     image = Magick::Image.new(x_size, y_size)
     idraw = Magick::Draw.new
     x_draw_size = x_size / 100 * args.project_progress
-    idraw.polygon(0, 0, 0, y_size, x_draw_size, y_size, x_draw_size, 0)
+    idraw.polygon(0, 20, 0, 120, x_draw_size, 120, x_draw_size, 20)
+    idraw.text(0, 0, "Test Text Progress 810%")
     idraw.draw(image)
     image.write(local_image_path)
 
@@ -72,7 +73,7 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     p cloudinary_img_url
 
     data = {
-      message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。',
+      message: '今日は ' + args.project_name + ' の ' + args.phase_name + ', 「' + args.task_name + '」の開発をしましょう。 https://cnh-1.asaken1021.net:8080/projects/' + args.project_id,
       to: args.line_id
     }.to_json
 
