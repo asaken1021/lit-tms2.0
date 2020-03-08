@@ -63,13 +63,15 @@ task :send_line_notify, ['user_id', 'project_id', 'project_name', 'phase_name', 
     image = Magick::Image.new(x_size, y_size)
     idraw = Magick::Draw.new
     x_draw_size = x_size / 100 * args.project_progress
-    idraw.fill('green')
+
+    idraw.fill('black')
+    idraw.text(0, 13, 'Progress: ' + args.project_progress.to_i.to_s + '%')
+
+    idraw.fill('lightgreen')
     idraw.stroke('black')
     idraw.stroke_width(1)
     idraw.polygon(0, 20, 0, 120, x_draw_size, 120, x_draw_size, 20)
-    idraw.fill('black')
-    idraw.stroke_width(0)
-    idraw.text(0, 13, 'Progress: ' + args.project_progress.to_i.to_s + '%')
+
     idraw.draw(image)
     image.write(local_image_path)
 
