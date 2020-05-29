@@ -1,0 +1,590 @@
+[33mcommit 53b44342536dd3b51898885b96c33a2eec168a1e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 14:33:58 2020 +0900
+
+    .
+
+[33mcommit d56c16f8c0464a9f6c475953e85e75cc8f0dba0d[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 14:32:53 2020 +0900
+
+    修正
+
+[33mcommit 35d609879154dc07cde93e9fbc6195f40ec77d17[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 14:29:03 2020 +0900
+
+    画像のバーの色の変更
+
+[33mcommit 6988649ca864ac7015ca1db18855acaaded98682[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 12:13:50 2020 +0900
+
+    書き忘れ(2)
+
+[33mcommit 357f541b95aa7f40c1e10587579404882d6bb929[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 12:12:14 2020 +0900
+
+    to_sの書き忘れ
+
+[33mcommit 279a9c14f9b8a44e83ec11cda81028150f4e4e47[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 11:54:21 2020 +0900
+
+    aaa
+
+[33mcommit 7a0cbe08c06a73ac55394136eea41e795f7cd73d[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Mar 8 11:48:06 2020 +0900
+
+    通知にURLを追加(仮)
+
+[33mcommit 2ca985d67d6e931d31ac8c8a958081b3493e5dfe[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 23 14:11:48 2020 +0900
+
+    CloudinaryのURLをhttpsに置き換えるように変更
+
+[33mcommit 5ef2a1941005cb3a1126d19184172e2fc9141759[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 23 13:53:29 2020 +0900
+
+    CloudinaryのAPIキー等の読み込み方法の変更
+
+[33mcommit 9e92790287f2595d615f5a0fe6e6497fa6e77680[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 23 13:45:33 2020 +0900
+
+    URLの修正
+
+[33mcommit aea304c33624d6f7ff211ee929b042c10d76552a[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 23 11:41:11 2020 +0900
+
+    仮修正
+
+[33mcommit 9cc5cfe2ba1cbe01c1973650c2fe7e47422df1f0[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 23 11:34:44 2020 +0900
+
+    Cloudinary gemの追加、画像のアップロードテスト
+
+[33mcommit 6ed843fe76b6ba2c56c360a69ca5194795477493[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 9 14:50:54 2020 +0900
+
+    通知で画像を送信するように変更
+
+[33mcommit b64c23897151df4c8a4224034bb53eceff3c7c2c[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 9 14:43:51 2020 +0900
+
+    rakeタスクで.to_sを書いていなかった
+
+[33mcommit 2cff9c1c5260815f610c852a2490cdc60ddb2b0c[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 9 13:35:17 2020 +0900
+
+    rakeタスクの引数ミスを修正とprepare.shに必要パッケージを追加
+
+[33mcommit 9ae232c0e39cb45083c200c383cb2d40eefaa7d3[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Feb 9 12:29:13 2020 +0900
+
+    通知送信時に進捗の画像を生成するテスト
+
+[33mcommit 36c30c4192c0d707592fdd6bd333ad858f7314f3[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jan 26 14:14:05 2020 +0900
+
+    プロジェクトの公開設定がフェーズページに適用されてない問題を修正
+
+[33mcommit 424682f1e11b32435d7f1f55225169a901450bc7[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jan 26 13:59:16 2020 +0900
+
+    プロジェクト設定ボタンの追加、フェーズページの表示を一部変更
+
+[33mcommit ce4937f6dfabd4bec60170815961e7912fbfc629[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jan 12 16:07:30 2020 +0900
+
+    プロジェクトの削除時にアクティビティが削除されていないのを修正
+
+[33mcommit f7e7e0b0e97d9c3e123a5d64ca3ca5f0cd1a6645[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jan 12 15:19:14 2020 +0900
+
+    Update rack to 2.0.8
+
+[33mcommit 6a7a2c80d61f8e8e0dcb4312db88757e9a98886f[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jan 12 14:58:45 2020 +0900
+
+    プロジェクトの公開設定を追加、削除機能の追加、サインアウト時にホームに戻るように変更
+
+[33mcommit f5ba955869f2575702c342d3b526864690988e96[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Dec 1 16:21:53 2019 +0900
+
+    2つ目のプロジェクト移行でフェーズ追加ボタンが表示されない問題を修正(できてないかも)
+
+[33mcommit 5f07f27388f4ac4e49c118e4093f13acaf74eaf9[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Nov 17 13:41:06 2019 +0900
+
+    ^q^
+
+[33mcommit 091e7547dc4f6cad778905aa2ab8a0a38a0d96d0[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Oct 20 15:45:00 2019 +0900
+
+    Rakeタスクの編集
+
+[33mcommit 4bfcaa9889a99e6046cf57fe93b9360b013de4de[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Oct 20 14:12:00 2019 +0900
+
+    権限の修正
+
+[33mcommit 232a1de26726d15950bc9c997f73f52ee8fa5aae[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Oct 20 14:11:14 2019 +0900
+
+    必須パッケージインストールのスクリプトと開始スクリプトの追加
+
+[33mcommit cc4e195a19eb62323a8a6ab8c8b6607efdd6bb94[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Oct 20 12:47:42 2019 +0900
+
+    ^q^^q^^q^^q^^q^^q^^q^^q^^q^
+
+[33mcommit 21da90472d434f00c75da4920418ca33c53ad429[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Sep 2 23:09:38 2019 +0900
+
+    実行権限付与
+
+[33mcommit c5349438727723055c7e0562160d484e448f6915[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Sep 2 22:20:47 2019 +0900
+
+    画像の削除
+
+[33mcommit 4503a429e88df411d1c9173ed51957f4063b6e08[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Sep 2 21:51:44 2019 +0900
+
+    初回実行用シェルスクリプト の追加
+
+[33mcommit 25db547874aacbb8205a55cd2f74e9737d8805c3[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Aug 25 17:28:21 2019 +0900
+
+    レイアウトを少し変更、使い方ページの追加
+
+[33mcommit c3d0200ce51bdef905a9ff8d71c018895a4bd39c[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Aug 25 13:31:25 2019 +0900
+
+    アクティビティ機能の追加、グループ機能の実装完了
+
+[33mcommit 97a5def5edcd1bf9a235c087293d7a25f15fabf9[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 24 16:31:00 2019 +0900
+
+    グループ機能の追加、ユーザーページの追加
+
+[33mcommit 2755ae992327b45efe15c1bab3ef15e8dd457ddc[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 15:31:01 2019 +0900
+
+    577pxから767pxまでの幅において、tms-project-progress-contentの位置を修正
+
+[33mcommit 9abc2bdb3fbb699c6430d55b61cc1aa9ed65fc66[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 15:23:14 2019 +0900
+
+    タスクの進捗度編集modalでのrangeのvalueをcenterに配置、モバイルでのrangeのwidthを90%にセット
+
+[33mcommit d5327e810ad8636e5a80317adba333f8557af6ae[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 14:58:35 2019 +0900
+
+    スマホ表示の時にフェーズページでタスクのメモを表示しないように
+
+[33mcommit 63ecee785e99e38e986df0e91a4e6b17a3f8fb6f[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 14:34:11 2019 +0900
+
+    修正
+
+[33mcommit 276611a71ae3bc6e8100a1960d43dbdef53eb29a[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 14:12:48 2019 +0900
+
+    レスポンシブ対応
+
+[33mcommit b1f58337a5c7b04166d5c575e5b62c50d6e5b051[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 14:04:51 2019 +0900
+
+    レスポンシブ対応（仮）
+
+[33mcommit b9d022fe9524f94530ed36e0b7a4a86e18630bb8[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 13:39:08 2019 +0900
+
+    レイアウトをちょっと修正
+
+[33mcommit 91158af7339cb7f00601a389f64a69ff028726e0[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 13:36:40 2019 +0900
+
+    viewportを設定, スマホから開いたときにハンバーガーメニューが出るようにした
+
+[33mcommit 4eadec775a7966584b4cd598912198ed872af9cd[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sat Aug 3 10:23:06 2019 +0900
+
+    LINEのpush通知テストページを削除
+
+[33mcommit afef314955e5ffa3047204e444ffa1e5c961d4f9[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 17:00:32 2019 +0900
+
+    ignore編集
+
+[33mcommit d041e92a9ea5c4d1c2cf383c6d2cc28e8baf83a6[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 16:39:53 2019 +0900
+
+    LINEのpush通知実装
+
+[33mcommit b1000cd3430d262b70e8f04ba66d98a0adfd5383[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 16:18:02 2019 +0900
+
+    条件式ミス
+
+[33mcommit 41c4d653047180fb69d6130095a1aaf9b2bcfbe2[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 16:02:52 2019 +0900
+
+    ^q^q^^q^q^q^q^
+
+[33mcommit 7736f8dfcfc5e3ef6441f734f2cb6047bd93e305[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 15:52:28 2019 +0900
+
+    _め...
+
+[33mcommit ed051a226eef99ec9f0a32438a29da6f90c2e2e7[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 15:44:05 2019 +0900
+
+    LINEpush通知テスト
+
+[33mcommit abda4e1d2f745acf267677a177ca12e7a4b51375[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Fri Aug 2 13:49:51 2019 +0900
+
+    sgdxfchj
+
+[33mcommit 0a40f5e55b39354a9e46012e209ab8f95e720b6f[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Aug 1 15:36:05 2019 +0900
+
+    rake仮
+
+[33mcommit 377d0e74531fcf1c00c793085fce4e0cbecc40ed[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Aug 1 11:39:54 2019 +0900
+
+    wheneverizeと通知設定保存機能実装
+
+[33mcommit 599d726e875f292dfd81a499ab84ca29432b3674[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Wed Jul 31 17:24:05 2019 +0900
+
+    通知の曜日と時間帯を設定する準備
+
+[33mcommit fd317c25cb12111e71527fa313ead8b8a19de84f[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 12:54:27 2019 +0900
+
+    サインインしていない時にユーザー設定ページを表示するとNoMethodErrorが起きるのを修正　
+
+[33mcommit 63ad1c3f155d531f0c082b68d386e0842983a804[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 12:50:08 2019 +0900
+
+    ユーザー設定画面にLINEユーザーIDを表示するように変更
+
+[33mcommit 2fca56b0cb5a15f6e1ea683aad6482e9a0ed0003[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 01:10:05 2019 +0900
+
+    binding.pry削除
+
+[33mcommit b01b8596b5676de17e7cdbbf4914f45b5e9197d8[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 01:07:14 2019 +0900
+
+    APIからのpostはJSONだった
+
+[33mcommit fad724247d6e317c06cdaa79924dc7a923c90506[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 01:02:20 2019 +0900
+
+    debug用binding.pry
+
+[33mcommit 6a834fe3feb18ed3b2879571af0609d4b4b2a7be[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 00:48:48 2019 +0900
+
+    Nonceのn回目修正
+
+[33mcommit d01f12200a0f577a9bc96d81327bb8ade4b9adcb[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 00:46:55 2019 +0900
+
+    :thinking:
+
+[33mcommit 0764728696eb7855b2b26487ebd8a7df533ef219[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 00:43:59 2019 +0900
+
+    Nonce長すぎたw
+
+[33mcommit 70ae071f09ea3d611822d294a2c565de62cbd7bf[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 00:42:27 2019 +0900
+
+    Nonce
+
+[33mcommit 92e1ba5cd3e702fbd98f33cce11ef15eee8b6ae4[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 00:37:08 2019 +0900
+
+    bindinging
+
+[33mcommit 8ed17327464d14e648645dc5e8925098dc495400[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 22 00:35:03 2019 +0900
+
+    binding
+
+[33mcommit 34fae111cdf3654fae8833544b1a37cac349a8fd[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 21 23:54:39 2019 +0900
+
+    LINEアカウント連携追加
+
+[33mcommit 31dfacd445e564f10d99179cd649e9486b2bee8a[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 21 21:12:31 2019 +0900
+
+    LINE Bot用バックエンドサーバーとの連携をできるようにした
+
+[33mcommit d3746618695d5db9ad90f8b3b6a9a6b2a5b3f0b2[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 21 15:00:24 2019 +0900
+
+    LINE Bot APIを削除
+
+[33mcommit 5e91cec7a8199eec7fd537494185fa8e089af8b3[m[33m ([m[1;31mheroku/master[m[33m)[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 21 13:42:39 2019 +0900
+
+    SSLテスト
+
+[33mcommit 1c0cfa8eaf1ad6a11fefb71f05c21ac1b1e89f9a[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 21 13:31:02 2019 +0900
+
+    LINE Bot API 修正
+
+[33mcommit 3b9c8adaedb7836bd33fe15012d23c02d5fd9723[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 21 13:20:01 2019 +0900
+
+    LINE Bot APIの導入
+
+[33mcommit 31cd1b49ba562677b40aa7ba86246e2a1f3c07fa[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 8 18:13:26 2019 +0900
+
+    進捗が100%になったときに"100.%"と表示されるのを修正
+
+[33mcommit a5b18711ceb0a700ec1f7c4faa7a62e9ac1ce3bb[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jul 8 18:06:16 2019 +0900
+
+    プロジェクト＆フェーズページでのタイトル・進捗率・グラフのレイアウトを変更
+
+[33mcommit e19430cc8d40ce3e5a70664052dbaa36a2b36a75[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 20:20:25 2019 +0900
+
+    もう１度修正
+
+[33mcommit 9a8ecaf3ac92c4a95c12d5f69e3bec75cac1a864[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 20:15:24 2019 +0900
+
+    else書くの忘れてた
+
+[33mcommit ae4f6af007c51245771bc2eb888ffb2fa22ee409[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 20:14:15 2019 +0900
+
+    フェーズページの進捗度のとこのバグを修正
+
+[33mcommit 974ff0c8d86fda40bcbb94521666222e416b7100[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 20:03:24 2019 +0900
+
+    未ログインや違うアカウントからpostされた時にエラーメッセージを表示するように変更
+
+[33mcommit 812885347595b8c94c1091207081bdada111c2a0[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 19:45:55 2019 +0900
+
+    プロジェクト一覧がそのユーザーが作成したもののみが表示されるように変更　など
+
+[33mcommit 22f86580feae892d70777f84066097c81b475bdc[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 15:56:01 2019 +0900
+
+    Navbarレイアウト周りを少し修正
+
+[33mcommit 6adc27ba0ea0f9a5eeea79277e3ebbb801d4ddc3[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 15:03:59 2019 +0900
+
+    ホスト名間違ってたので修正
+
+[33mcommit 4d6eea2dd7e44f7431bf28d2a44b36dfddc5038f[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jul 7 14:56:12 2019 +0900
+
+    特定のホスト名のときはSSLを有効化＆ユーザー機能の追加（一部のみ）
+
+[33mcommit c5d5a8ddb94ef8c736688a1c1b99b4415a5642bc[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Wed Jul 3 10:01:13 2019 +0900
+
+    phase_pageのタスク進捗度編集フォームのJSが一部で動かない問題を修正
+
+[33mcommit 13dc78b871e9e30d854ab911dfe1849f1a116848[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jun 30 00:12:16 2019 +0900
+
+    フェーズページもフェーズ作成画面をカレンダーに対応
+
+[33mcommit 0f39066c9575db8c75e0dc5cc974a32d1d1e91cd[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 13:32:44 2019 +0900
+
+    フェーズの締め切り日付をカレンダーで選択するように変更
+
+[33mcommit 9c7434ba27f380a1842a605b14f8c8999ab0ca52[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 12:50:29 2019 +0900
+
+    moment.js追加したけどカレンダー出ない
+
+[33mcommit ca67e94312ae2da25203d7fd085ac8d0dbc0625a[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 12:01:44 2019 +0900
+
+    プロジェクトを作成するとTypeErrorでプロジェクトページが開かない問題を修正
+
+[33mcommit 1518fc8908d251a426425e8a2f524e076e9745e2[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 11:39:54 2019 +0900
+
+    deadlineのvalidation追加
+
+[33mcommit f68c2b5435b078a1f4bc648e7a6e5d96ea33a3af[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 11:32:17 2019 +0900
+
+    タスクの進捗度編集をmodalに対応＆フェーズの締め切り日時のエラーを修正
+
+[33mcommit a191b7828e17183c518dc69013d23eec45f23512[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 11:01:23 2019 +0900
+
+    プロジェクト＆フェーズ＆タスク作成をmodalに変更
+
+[33mcommit 8dd59891c86e57353aebd302d638e30cff456032[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Thu Jun 27 00:09:47 2019 +0900
+
+    画面遷移＆タスクの編集で進捗度が更新されるように変更
+
+[33mcommit 31871f6976e7a65b181ca85d2b7299708e2adbac[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Wed Jun 26 23:52:34 2019 +0900
+
+    タスクの進捗度編集の時に%表示されるように変更
+
+[33mcommit 289be0d02cacfe3f05b98111ee8f80fe3b45bf64[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Wed Jun 26 22:40:34 2019 +0900
+
+    なんか残ってたbinding.pryを削除
+
+[33mcommit 4fa15278c48621b8d861183cfc4b5ab0bcfdd4b5[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Wed Jun 26 22:38:15 2019 +0900
+
+    c3.jsの追加
+    gemにpryを追加（デバッグ用）
+    project_pageとphase_pageにプロジェクト全体の進捗度を円グラフで表示
+    dbのproject.progressをintからfloatに変更
+
+[33mcommit 4b96375f4e238af27cecae534ca9c6e481b3b860[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Tue Jun 25 08:56:52 2019 +0900
+
+    作成ページ＆編集ページ＆フェーズページのレイアウトを作成
+
+[33mcommit 318da2eee85b313f584a742ea0c6f71952ca8610[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Tue Jun 25 00:51:33 2019 +0900
+
+    stylesheet.cssの追加＆layoutからproject_pageまでのレイアウトを作成
+
+[33mcommit 821e2aff2ae07b4b266c7608f449816e4a0eb7e0[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Mon Jun 24 12:44:39 2019 +0900
+
+    erbの追加＆編集、phase_pageやcreate_phase＆create_task等
+
+[33mcommit a1a8f0f6f542d82022a8cbd1b3903758898d4a31[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jun 23 17:58:49 2019 +0900
+
+    各テーブルに外部参照キーのカラムを追加＆indexの編集＆project_pageの追加
+
+[33mcommit 0573b1bfe93b27be448904e8bb6eceddeab3319e[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jun 23 16:25:34 2019 +0900
+
+    added .gitignore
+
+[33mcommit bbe3d493c78405f83467a6b08207c4b662a2ffbe[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jun 23 16:21:40 2019 +0900
+
+    edit README.md
+
+[33mcommit aaa1d11f5faef50b3d763b250025427029a03526[m
+Author: asaken1021 <asaken1021@outlook.com>
+Date:   Sun Jun 23 16:19:10 2019 +0900
+
+    First Commit (2)
