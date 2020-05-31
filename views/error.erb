@@ -8,6 +8,8 @@
           <h2 class="tms-project-title col text-danger">エラー：アカウントが違います</h2>
         <% elsif @error_code == 3 %>
           <h2 class="tms-project-title col text-danger">エラー：見つかりませんでした</h2>
+        <% elsif @error_code == 4%>
+          <h2 class="tms-project-title col text-danger">エラー：サインインに失敗しました</h2>
         <% end %>
       </div>
     </div>
@@ -19,5 +21,7 @@
     <p class="error-reason-text">あなたはプロジェクトの作成者ではないため、編集できません。</p>
   <% elsif @error_code == 3 %>
     <p class="error-reason-text">リクエストされたURLは無効です。</p>
+  <% elsif @error_code == 4 %>
+    <p class="error-reason-text">メールアドレスかパスワードが違います。</p>
   <% end %>
 </div>

@@ -59,8 +59,12 @@ post '/sign_in' do #ユーザーサインイン
   user = User.find_by(mail: params[:mail])
   if user && user.authenticate(params[:password])
     session[:user] = user.id
+    redirect to(params[:redirect_to])
+  else
+    session[:user] = nil
+    @error_code = 4
+    erb :error
   end
-  redirect to(params[:redirect_to])
 end
 
 post '/sign_out' do #ユーザーサインアウト
